@@ -1,30 +1,44 @@
-# react-project-starter
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-1. Using the terminal, create the scaffolding for a new React application with the [`create-react-app .`](https://github.com/facebookincubator/create-react-app) generator. You **must** make your app in the _root_ folder of the assignment repo (**not** inside an additional "app" folder):
+## Available Scripts
 
-    ```bash
-    # create a react app in _this_ repo
-    create-react-app .  # note the period!
-    ```
+In the project directory, you can run:
 
-2. I recommend you then "clean up" the `src/` repository, removing the `App.css` and `logo.svg` files and all the content of `App.js`. You can then begin implementing your project fresh with a new `<App>` component.
+### `npm start`
 
-3. Update the README file to explain what the project is about. You will also track how you both contributed to this stage here.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-4. Create a stage-2-yourname folder *in the assignment repo*, and copy in your code so you can have that code for reference!
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-5. Commit and push your changes to GitHub.
+### `npm test`
 
-6. Let your partner know it's ready!
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-#### Your partner shall now do the following:
+### `npm run build`
 
-7. Your partner should join the repo by click on the assignment link and then joining the team created earlier.
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-8. Your partner should then `clone` the repository so they have a copy on their own machine (and `git pull` if needed).
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-9. Your partner should similar create a folder _in the repo_ called `stage-2-theirname` that contains their stage-2 code, again to be used as reference.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-10. Your partner should `push` this code back to GitHub, which you should `pull` down. 
+### `npm run eject`
 
-#### Now you are both ready to go!
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

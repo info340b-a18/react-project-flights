@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="James Kim">
+    <meta name="description" content="Interactive application to display the best airlines to fly with in the United States">
+    <meta name="keywords" content="airplane, flight, airline, delay, plane, airport, region, United States, domestic, flying">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.js"></script>
+    <script src="https://fastcdn.org/Papa-Parse/4.1.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="node_modules/datamaps/dist/datamaps.world.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Flight!</title>
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="index.html">Flight!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="airlinestab" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Airlines
+                    </a>
+                    <div class="dropdown-menu dropdown-nav" aria-labelledby="airlinestab">
+                        <a class="dropdown-item dropdown-nav" href="airlines.html">Basic Statistical Descriptions</a>
+                        <a class="dropdown-item dropdown-nav" href="airlines.html#graph2">Pie Charts</a>
+                        <a class="dropdown-item dropdown-nav" href="airlines.html#graph3">Delays by Airlines</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Region
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="card-body">
+            <h1>Map</h1>
+            <div class="card mb-3">
+                <div id="map" style="position: relative; width: 95%; max-width: 900px; height: 70vw; max-height: 500px">
+                </div>
+                <div class="card-body" id="selected-airport">
+                    <div class="box">
+                        <p>To see more information on the airport click on an airport on the map!</p>
+                    </div>
+                    <div class="box" id="displaybox">
+                        <h2>:</h2>
+                        <h3>:</h3>
+                        <a target="_blank"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <!--    <div class="card-body">
+        <h1>Regional</h1>
+        <div id="chart">
+            <h2>Number of Airports Visited</h2>
+            <img class="graphs" src="img/graph1.png" alt="bar chart">
+            <p>Skywest Airlines visits the most airports out of all the other airlines.</p>
+        </div>
+        <div id="chart2">
+            <h2>Map</h2>
+            <img class="graphs" src="img/map1.png" alt="map1">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Airline
+                </button>
+                <div class="dropdown-menu country" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item country" href="#">Delta Airlines</a>
+                  <a class="dropdown-item country" href="#">American Airlines</a>
+                  <a class="dropdown-item country" href="#">Alaska Airlines</a>
+                </div>
+            </div>
+            <p>You can display the routes on a given Airline.</p>
+        </div>
+        <div id="chart3">
+            <h2>Delay by Airport</h2>
+            <img class="graphs" src="img/graph2.png" alt="chart of all airports in the US and the delay times">
+            <p>This graph is subsetted into minutes delayed. It displays
+                the variations of the delays with respect to the origin 
+                airport and for every airplane.
+            </p>
+        </div> 
+    </div>-->
+    </main>
+    <footer>
+        <li>© 2018 James Kim</li>
+    </footer>
+    <script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
