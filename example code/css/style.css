@@ -1,0 +1,170 @@
+body{
+    min-height: 68rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    max-width: 1250px;
+    margin-bottom: 100px;
+    margin: auto;  
+}
+.countries {
+    fill: #b0d0ab;
+    stroke: #6cb0e0;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .airports {
+    fill: #036;
+    stroke: #6cb0e0;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+nav{
+    background-color: #003459;
+    color: #fff;
+    position: fixed;
+    max-width: 1250px;
+    margin: auto;  
+    top: 0;
+    left: 0;
+}
+.dropdown-nav{
+    background: #003459;
+    color: rgba(255,255,255,.5);
+}
+div.box{
+    padding: 1.5rem;
+}
+h2{
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+.navbar-collapse.collapse.in {
+    display: block!important;
+}
+#graph, #graph2, #graph3, #chart, #chart2, #chart3{
+    border: 1px solid;
+    padding: 1.5rem;
+    margin: .5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+
+}
+#displaybox{
+    display: none;
+    width: 100%;
+}
+.container{
+    position: relative;
+    width: 100%;
+    margin-right: 0%;
+    margin-left: 0%;
+    max-width: 100%;
+    padding-left: 0%;
+    padding-right: 0%;
+    max-height: 400px;
+}
+.card-img{
+    max-height: 400px;
+}
+.graphs{
+    max-width: 100%;
+    height: auto;
+}
+@media(min-width: 768px){
+    .graphs{
+        max-width: 100%;
+    }
+    .main-card-body{
+        display: flex;
+    }
+    .box{
+        display: flex;
+        flex-direction: column;
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+    .btn-main{
+        margin-top: auto;
+        background: #003459;
+        color: #fff;
+    }
+    div#graph, div#graph2, div#graph3, div#chart, div#chart2, div#chart3{
+        float: left;
+        width: 45%;
+    }
+
+
+}
+@media(min-width: 992px){
+    .graphs{
+        max-width: 100%;
+        height: auto;
+    }
+    div#graph, div#graph2, div#graph3, div#chart, div#chart2, div#chart3{
+        float: left;
+        width: 47%;
+    }
+}
+.text-block {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #003459;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+footer{
+    bottom: 0;
+    padding: 10px 5px;
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    background-color: #003459;
+    color: #fff;
+    position: fixed;
+}
+.box{
+    border: 1px solid;
+    padding: 10px 5px;
+    margin: .5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+}
+a.link{
+    color: #3333FF;
+}
+footer li {
+    display: inline;
+    margin: auto;
+}
+#dropdownMenuButton, .country, .btn-flight, .btn-main{
+    background: #003459;
+    color: #fff;
+}
+@media(max-width: 598px){
+    .container{
+        display: none;
+    }
+    #map{
+        max-width: 100%;
+    }
+}
+#map{
+    position: relative;
+    margin: 100px auto 0;
+    display: table;
+
+}
+#airports{
+    position: absolute;
+}
+#selected-airport{
+    margin: 2.5rem;
+}
