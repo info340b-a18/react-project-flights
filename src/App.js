@@ -12,7 +12,7 @@ export class App extends Component {
       <div className="container">
         <h1>Flights</h1>
         <Router>
-          <div className="contianer">
+          <div className="container">
             <Link to="/">Home</Link>-
       <Link to="/Airlines">Airline</Link>-
       <Link to="/Region">Region</Link>
@@ -27,5 +27,6 @@ export class App extends Component {
     )
   }
 }
+
 
 export default App;
