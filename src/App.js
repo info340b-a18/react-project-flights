@@ -3,7 +3,7 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
-import { Region } from './Region.js';
+import { Region } from './region/Region.js';
 import { About } from './About.js';
 
 export class App extends Component {
