@@ -5,25 +5,70 @@ import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './Region.js';
 import { About } from './About.js';
+import {Piechart} from './Piechart.js';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
 export class App extends Component {
   render() {
     
     return (
+      
       <div className="container">
-      <h1>Flights</h1>
+      
         <Router>
+        
       <div className="contianer">
-      <Link to="/">Home</Link>-
-      <Link to="/Airlines">Airline</Link>-
+      <Navbar color= "light" fixed-top expand="lg">
+      <NavbarBrand href="/">Flight!</NavbarBrand>
+      <NavItem>
+      <Link to="/">Home</Link>
+      </NavItem>
+      <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                <Link to="/Airlines">Airline</Link>
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+      <NavItem>
       <Link to="/Region">Region</Link>
+      </NavItem>
+      <NavItem>
       <Link to ="/About">About</Link>
+      </NavItem>
+      <NavItem>
+      <Link to ="/Piechart">Piechart</Link>
+      </NavItem>
+      </Navbar>
       <Route exact path="/" component={Homepage} />
       <Route path="/Airlines" component={Airlines} />
       <Route path="/Region" component={Region} />
       <Route path = "/about" component={About} />
+      <Route path = "/Piechart" component={Piechart} />
       </div>
     </Router>
+   
       </div>
     )
   }
