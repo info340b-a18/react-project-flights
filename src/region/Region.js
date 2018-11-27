@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
-import { flights } from "../data/flightData";
 import { airports } from "../data/usAirports";
-
 
 export class Region extends Component {
   constructor(props) {
