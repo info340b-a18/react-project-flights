@@ -20,53 +20,63 @@ import {
 } from 'reactstrap';
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+    
+  }
+  
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+  
+
   render() {
     return (
-
-      <div className="container">
-
-        <Router>
-          <div className="container">
-            <Navbar color="light" fixed-top expand="lg">
-              <NavbarBrand href="/">Flight!</NavbarBrand>
-              <NavItem>
-                <Link to="/">Home</Link>
-              </NavItem>
+      <Router>
+        <div>
+          <Navbar color="light" light expand="md">
+            <NavbarBrand href="/">Flight</NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  <Link to="/Airlines">Airline</Link>
+                  <DropdownToggle nav caret>
+                  <Link to="/Airlines">Airlines</Link>
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
+                  <DropdownMenu right>
+                    <DropdownItem>
+                    <Link to="/Airlines">Table</Link>
                   </DropdownItem>
-                  <DropdownItem>
-                    Option 2
+                    <DropdownItem>
+                    <Link to="/Airlines">Table</Link>
                   </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <NavItem>
-                <Link to="/Region">Region</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/About">About</Link>
-              </NavItem>
-            </Navbar>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/Airlines" component={Airlines} />
-            <Route path="/Region" component={Region} />
-            <Route path="/about" component={About} />
-          </div>
-        </Router>
-
-
-      </div>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+                <NavItem>
+                  <NavLink><Link to="/Region">Region</Link></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink><Link to="/about">About</Link></NavLink>
+                </NavItem>
+                
+              </Nav>
+            </Collapse>
+          </Navbar>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/Airlines" component={Airlines} />
+          <Route path="/Region" component={Region} />
+          <Route path="/about" component={About} />
+        </div>
+      </Router>
     )
   }
+  
 }
 
 

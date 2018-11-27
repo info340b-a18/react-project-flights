@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import './Homepage.css'
 import airport from './img/airport.jpeg';
-import { Card, CardDeck, CardText, CardBody,
-    CardTitle, CardImg, CardImgOverlay, Button } from 'reactstrap';
-    import {
-        Navbar,
-        Header,
-        Collapse,
-        NavbarToggle,
-        NavbarBrand,
-        Nav,
-        NavItem
-     } from 'reactstrap';
+import { Card, CardText, CardBody,
+    CardTitle, CardImg} from 'reactstrap';
       
   
 
