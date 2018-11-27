@@ -3,7 +3,7 @@ import './App.css';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
-import { Region } from './Region.js';
+import { Region } from './region/Region.js';
 import { About } from './About.js';
 import {
   Collapse,
@@ -16,25 +16,25 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem
+} from 'reactstrap';
 
 export class App extends Component {
   render() {
     return (
-      
+
       <div className="container">
-      
+
         <Router>
-        
-      <div className="contianer">
-      <Navbar color= "light" fixed-top expand="lg">
-      <NavbarBrand href="/">Flight!</NavbarBrand>
-      <NavItem>
-      <Link to="/">Home</Link>
-      </NavItem>
-      <UncontrolledDropdown nav inNavbar>
+          <div className="container">
+            <Navbar color="light" fixed-top expand="lg">
+              <NavbarBrand href="/">Flight!</NavbarBrand>
+              <NavItem>
+                <Link to="/">Home</Link>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                <Link to="/Airlines">Airline</Link>
+                  <Link to="/Airlines">Airline</Link>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
@@ -49,24 +49,25 @@ export class App extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-      <NavItem>
-      <Link to="/Region">Region</Link>
-      </NavItem>
-      <NavItem>
-      <Link to ="/About">About</Link>
-      </NavItem>
-      </Navbar>
-      <Route exact path="/" component={Homepage} />
-      <Route path="/Airlines" component={Airlines} />
-      <Route path="/Region" component={Region} />
-      <Route path = "/about" component={About} />
-      </div>
-    </Router>
-   
+              <NavItem>
+                <Link to="/Region">Region</Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/About">About</Link>
+              </NavItem>
+            </Navbar>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/Airlines" component={Airlines} />
+            <Route path="/Region" component={Region} />
+            <Route path="/about" component={About} />
+          </div>
+        </Router>
+
 
       </div>
     )
   }
 }
+
 
 export default App;
