@@ -5,24 +5,65 @@ import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './region/Region.js';
 import { About } from './About.js';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
 export class App extends Component {
   render() {
     return (
+
       <div className="container">
-        <h1>Flights</h1>
+
         <Router>
           <div className="container">
-            <Link to="/">Home</Link>-
-      <Link to="/Airlines">Airline</Link>-
-      <Link to="/Region">Region</Link>
-            <Link to="/About">About</Link>
+            <Navbar color="light" fixed-top expand="lg">
+              <NavbarBrand href="/">Flight!</NavbarBrand>
+              <NavItem>
+                <Link to="/">Home</Link>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  <Link to="/Airlines">Airline</Link>
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              <NavItem>
+                <Link to="/Region">Region</Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/About">About</Link>
+              </NavItem>
+            </Navbar>
             <Route exact path="/" component={Homepage} />
             <Route path="/Airlines" component={Airlines} />
             <Route path="/Region" component={Region} />
             <Route path="/about" component={About} />
           </div>
         </Router>
+
+
       </div>
     )
   }
