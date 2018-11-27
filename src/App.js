@@ -5,7 +5,6 @@ import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './Region.js';
 import { About } from './About.js';
-import {Piechart} from './Piechart.js';
 import {
   Collapse,
   Navbar,
@@ -57,15 +56,11 @@ export class App extends Component {
       <NavItem>
       <Link to ="/About">About</Link>
       </NavItem>
-      <NavItem>
-      <Link to ="/Piechart">Piechart</Link>
-      </NavItem>
       </Navbar>
       <Route exact path="/" component={Homepage} />
       <Route path="/Airlines" component={Airlines} />
       <Route path="/Region" component={Region} />
       <Route path = "/about" component={About} />
-      <Route path = "/Piechart" component={Piechart} />
       </div>
     </Router>
    
