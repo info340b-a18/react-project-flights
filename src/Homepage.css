@@ -46,13 +46,22 @@ body{
     margin: .5rem;
     background-color: white;
     border-radius: 10px;
+    border-color: #003459;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
 
 .box{
     padding: 1.5rem;
+    
 }
 
+.box1 {
+    background-image: url("./img/airline.jpg");
+}
+
+.box2 {
+    background-image: url("./img/region.jpg");
+}
 #dashboard {
     position: absolute;
     top: 20px;

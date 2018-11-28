@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Homepage.css'
 import airport from './img/airport.jpeg';
+import airline from './img/airline.jpg';
+import region from './img/region.jpg';
 import {
     Card, CardText, CardBody,
     CardTitle, CardImg, CardImgOverlay, Button
@@ -17,9 +19,8 @@ export class Homepage extends Component {
             <div>
                 <Card>
                     <CardImg top width="100%" className="card-img" src={airport} alt="" />
-                    <CardImgOverlay style={{height: '400px'}}><h1 id="dashboard">Flight! Dashboard</h1></CardImgOverlay>
                     <CardBody>
-                        <div className="box">
+                        <div className="box box1">
                             <CardBody>
                                 <CardTitle><h2>Airlines</h2></CardTitle>
                                 <CardText><p>The airlines tab displays basic statistical descriptions as well as some
@@ -29,7 +30,7 @@ export class Homepage extends Component {
                                 <Button color="#003459" className="button" tag={Link} to="/Airlines">Airlines</Button>{' '}
                             </CardBody>
                         </div>
-                        <div className="box">
+                        <div className="box box2">
                             <CardBody>
                                 <CardTitle><h2>Region</h2></CardTitle>
                                 <CardText><p>The region tab display the relation between origin airport and delays.
