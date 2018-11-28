@@ -5,6 +5,7 @@ import {
     Card, CardText, CardBody,
     CardTitle, CardImg, CardImgOverlay, Button
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 
 
@@ -16,7 +17,7 @@ export class Homepage extends Component {
             <div>
                 <Card>
                     <CardImg top width="100%" className="card-img" src={airport} alt="" />
-                    <CardImgOverlay><h1 id="dashboard">Flight! Dashboard</h1></CardImgOverlay>
+                    <CardImgOverlay style={{height: '400px'}}><h1 id="dashboard">Flight! Dashboard</h1></CardImgOverlay>
                     <CardBody>
                         <div className="box">
                             <CardBody>
@@ -25,7 +26,7 @@ export class Homepage extends Component {
                                 graphics to display information comparing each airline. You can select
                         flights depending on origin and destination of the flight.</p>
                                 </CardText>
-                                <Button color="#003459" className="button" href="/Airlines">Airlines</Button>{' '}
+                                <Button color="#003459" className="button" tag={Link} to="/Airlines">Airlines</Button>{' '}
                             </CardBody>
                         </div>
                         <div className="box">
@@ -34,7 +35,7 @@ export class Homepage extends Component {
                                 <CardText><p>The region tab display the relation between origin airport and delays.
                         It also displays each airline's routes.</p>
                                 </CardText>
-                                <Button color="#003459" className="button" href="#">Region</Button>{' '}
+                                <Button color="#003459" className="button" tag={Link} to="/Region">Region</Button>{' '}
                             </CardBody>
                         </div>
                     </CardBody>
