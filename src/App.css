@@ -1,0 +1,11 @@
+.navbar,
+.navbar-default {
+    background-image: linear-gradient(to bottom,#003459 0,#003459 100%) !important; 
+    position: fixed;
+    /* override background image gradient w/ flat color */
+}
+
+.dropdown-item:hover, .dropdown-item:focus{
+  background: #003459;
+  color: rgba(255,255,255,.5);
+}

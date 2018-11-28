@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
 import { airports } from "../data/usAirports";
+import {
+  Card, CardText, CardBody,
+  CardTitle
+} from 'reactstrap';
 
 export class Region extends Component {
   constructor(props) {
@@ -37,7 +41,7 @@ export class Region extends Component {
               <dt>State: {airports.state}</dt>
               <dt>Longitude: {airports.lon}</dt>
               <dt>Latitude: {airports.lat}</dt>
-          </dl>
+            </dl>
           </Popup>
         </Marker>
       }
@@ -46,15 +50,25 @@ export class Region extends Component {
   render() {
     return (
       <div>
-        <Map
-          style={{ height: "100vh" }}
-          center={[35.64, -100.9141]}
-          zoom={3}>
-          <TileLayer
-            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-          {this.renderMarkers()}
-        </Map>
+        <Card>
+          <CardBody>
+            <div className="box">
+            <CardBody>
+            <CardTitle><h2>Map of Airports</h2></CardTitle>
+            <CardText><p>Click on an Airport to view more information.</p></CardText>
+            <Map
+              style={{ height: "100vh" }}
+              center={[35.64, -100.9141]}
+              zoom={3}>
+              <TileLayer
+                attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+              {this.renderMarkers()}
+            </Map>
+            </CardBody>
+            </div>
+          </CardBody>
+        </Card>
       </div>
     )
   }

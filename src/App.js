@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
@@ -18,6 +17,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import './App.css';
 
 export class App extends Component {
   constructor(props) {
@@ -28,41 +28,38 @@ export class App extends Component {
     };
     
   }
-  
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   };
-  
-
   render() {
     return (
       <Router>
         <div>
-          <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">Flight</NavbarBrand>
+          <Navbar color="light" light expand="md" fixed="top">
+            <NavbarBrand href="/" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
+              <Nav className="ml-auto" navbar >
               <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                  <Link to="/Airlines">Airlines</Link>
+                  <DropdownToggle nav caret style={{color: 'white'}}>
+                  <Link to="/Airlines" style={{color: 'white'}}>Airlines</Link>
                 </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu right style={{backgroundColor: '#003459'}}>
                     <DropdownItem>
-                    <Link to="/Airlines">Table</Link>
+                    <Link to="/Airlines" style={{color: 'white'}}>Chart</Link>
                   </DropdownItem>
                     <DropdownItem>
-                    <Link to="/Airlines">Table</Link>
+                    <Link to="/Airlines" style={{color: 'white'}}>Table</Link>
                   </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>
-                  <NavLink><Link to="/Region">Region</Link></NavLink>
+                  <NavLink><Link to="/Region" style={{color: 'white'}}>Region</Link></NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink><Link to="/about">About</Link></NavLink>
+                  <NavLink><Link to="/about" style={{color: 'white'}}>About</Link></NavLink>
                 </NavItem>
                 
               </Nav>
