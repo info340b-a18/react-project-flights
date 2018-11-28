@@ -80,7 +80,7 @@ export class Airlines extends Component {
             <div className="box" id="graph">
               <CardBody>
 
-              <CardTitle>>Graph</CardTitle>
+              <CardTitle>Graph</CardTitle>
               <CardText>This graph demonstrates the maximum and minimum delay time for each airline.</CardText>
 
                 <BarChart width={600} height={300} data={airlineData}

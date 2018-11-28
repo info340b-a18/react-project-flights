@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './Homepage.css'
 import airport from './img/airport.jpeg';
-import airline from './img/airline.jpg';
-import region from './img/region.jpg';
 import {
     Card, CardText, CardBody,
-    CardTitle, CardImg, CardImgOverlay, Button
+    CardTitle, CardImg, Button
 } from 'reactstrap';
 import { Link } from 'react-router-dom'
 

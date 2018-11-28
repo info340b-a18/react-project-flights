@@ -41,10 +41,13 @@ export class App extends Component {
       <Router>
         <div>
           <Navbar color="light" light expand="md" fixed="top">
-            <NavbarBrand href="/Homepage" style={{color: 'white'}}>Flight</NavbarBrand>
+            <NavbarBrand to="/Homepage" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar >
+              <NavItem>
+                  <NavLink tag={Link} to="/Homepage" style={{color: 'white'}}>Homepage</NavLink>
+                </NavItem>
               <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret style={{color: 'white'}}>
                   Airlines
