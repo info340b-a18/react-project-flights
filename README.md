@@ -7,3 +7,5 @@ Flight! is an interactive application to display the best airline to fly with wh
 Citations: 
 http://humangeo.github.io/leaflet-dvf/examples/html/airports.html#
 https://www.kaggle.com/fabiendaniel/predicting-flight-delays-tutorial/notebook
+
+bootstrapped with Create React App
