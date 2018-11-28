@@ -46,7 +46,7 @@ export class App extends Component {
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar >
               <NavItem>
-                  <NavLink tag={Link} to="/Homepage" style={{color: 'white'}}>Homepage</NavLink>
+                  <NavLink tag={Link} to="/Homepage" style={{color: 'white'}}>Home</NavLink>
                 </NavItem>
               <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret style={{color: 'white'}}>
