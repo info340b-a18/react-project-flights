@@ -41,7 +41,7 @@ export class App extends Component {
       <Router>
         <div>
           <Navbar color="light" light expand="md" fixed="top">
-            <NavbarBrand href="/" style={{color: 'white'}}>Flight</NavbarBrand>
+            <NavbarBrand href="/Homepage" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar >
@@ -68,7 +68,7 @@ export class App extends Component {
               </Nav>
             </Collapse>
           </Navbar>
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/Homepage" component={Homepage} />
           <Route path="/Airlines" component={Airlines} />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />

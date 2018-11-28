@@ -1,5 +1,6 @@
 {
   "name": "react-project-flights",
+  "homepage": "https://info340b-a18.github.io/react-project-flights/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,6 +26,8 @@
     "save": "^2.3.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build", 
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
