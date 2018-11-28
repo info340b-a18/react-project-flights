@@ -8,9 +8,7 @@ import {
 } from 'reactstrap';
 
 export class Region extends Component {
-  constructor(props) {
-    super(props)
-  }
+
   renderMarkers = () => {
     return airports.map(
       (airports) => {
@@ -54,8 +52,8 @@ export class Region extends Component {
           <CardBody>
             <div className="box">
             <CardBody>
-            <CardTitle><h2>Map of Airports</h2></CardTitle>
-            <CardText><p>Click on an Airport to view more information.</p></CardText>
+            <CardTitle>Map of Airports</CardTitle>
+            <CardText>Click on an Airport to view more information.</CardText>
             <Map
               style={{ height: "100vh" }}
               center={[35.64, -100.9141]}

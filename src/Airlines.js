@@ -12,9 +12,6 @@ import {
 
 
 export class Airlines extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     const data = flights
 
@@ -80,9 +77,9 @@ export class Airlines extends Component {
       <div>
         <Card>
           <CardBody>
-            <div className="box">
+            <div className="box" id="graph">
               <CardBody>
-              <CardTitle><h2>Graph</h2></CardTitle>
+              <CardTitle>Graph</CardTitle>
                 <BarChart width={600} height={300} data={airlineData}
                   margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -97,10 +94,10 @@ export class Airlines extends Component {
                 </BarChart>
               </CardBody>
             </div>
-            <div className="box">
+            <div className="box" id="table">
               <CardBody>
-                <CardTitle><h2>Table</h2></CardTitle>
-                <CardText><p>You can sort by clicking on the column names.</p></CardText>
+                <CardTitle>Table</CardTitle>
+                <CardText>You can sort by clicking on the column names.</CardText>
                 < ReactTable
                   data={data}
                   minRows={10}

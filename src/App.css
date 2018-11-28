@@ -8,3 +8,6 @@
     background-color: #003459;
     color: rgba(255,255,255,.5);
 }
+nav {
+  max-width: 1250px;
+}
