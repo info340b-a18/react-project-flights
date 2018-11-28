@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
 import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './region/Region.js';
@@ -46,22 +47,22 @@ export class App extends Component {
               <Nav className="ml-auto" navbar >
               <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret style={{color: 'white'}}>
-                  <Link to="/Airlines" style={{color: 'white'}}>Airlines</Link>
+                  Airlines
                 </DropdownToggle>
                   <DropdownMenu right style={{backgroundColor: '#003459'}}>
                     <DropdownItem>
-                    <Link to="/Airlines" style={{color: 'white'}}>Chart</Link>
+                    <HashLink to="/Airlines#graph" style={{color: 'white'}}>Graph</HashLink>
                   </DropdownItem>
                     <DropdownItem>
-                    <Link to="/Airlines" style={{color: 'white'}}>Table</Link>
+                    <HashLink to="/Airlines#table" style={{color: 'white'}}>Table</HashLink>
                   </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
                 <NavItem>
-                  <NavLink><Link to="/Region" style={{color: 'white'}}>Region</Link></NavLink>
+                  <NavLink tag={Link} to="/Region" style={{color: 'white'}}>Region</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink><Link to="/about" style={{color: 'white'}}>About</Link></NavLink>
+                  <NavLink tag={Link} to="/about" style={{color: 'white'}}>About</NavLink>
                 </NavItem>
                 
               </Nav>

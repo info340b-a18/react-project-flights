@@ -22,19 +22,19 @@ export class Homepage extends Component {
                     <CardBody>
                         <div className="box box1">
                             <CardBody>
-                                <CardTitle><h2>Airlines</h2></CardTitle>
-                                <CardText><p>The airlines tab displays basic statistical descriptions as well as some
+                                <CardTitle>Airlines</CardTitle>
+                                <CardText>The airlines tab displays basic statistical descriptions as well as some
                                 graphics to display information comparing each airline. You can select
-                        flights depending on origin and destination of the flight.</p>
+                        flights depending on origin and destination of the flight.
                                 </CardText>
                                 <Button color="#003459" className="button" tag={Link} to="/Airlines">Airlines</Button>{' '}
                             </CardBody>
                         </div>
                         <div className="box box2">
                             <CardBody>
-                                <CardTitle><h2>Region</h2></CardTitle>
-                                <CardText><p>The region tab display the relation between origin airport and delays.
-                        It also displays each airline's routes.</p>
+                                <CardTitle>Region</CardTitle>
+                                <CardText>The region tab display the relation between origin airport and delays.
+                        It also displays each airline's routes.
                                 </CardText>
                                 <Button color="#003459" className="button" tag={Link} to="/Region">Region</Button>{' '}
                             </CardBody>
