@@ -5,6 +5,11 @@ import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './region/Region.js';
 import { About } from './About.js';
+import { login } from './login.js'
+
+import 'firebase/auth';
+import 'firebase/database';
+
 import {
   Collapse,
   Navbar,
@@ -41,16 +46,16 @@ export class App extends Component {
       <Router>
         <div>
           <Navbar color="light" light expand="md" fixed="top">
-            <NavbarBrand to="/Homepage" style={{color: 'white'}}>Flight</NavbarBrand>
+            <NavbarBrand to="/" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar >
               <NavItem>
-                  <NavLink tag={Link} to="/Homepage" style={{color: 'white'}}>Home</NavLink>
+                  <NavLink tag={Link} to="/" style={{color: 'white'}}>Home</NavLink>
                 </NavItem>
               <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret style={{color: 'white'}}>
-                  Airlines
+                  Airlines  
                 </DropdownToggle>
                   <DropdownMenu right style={{backgroundColor: '#003459'}}>
                     <DropdownItem>
@@ -67,14 +72,18 @@ export class App extends Component {
                 <NavItem>
                   <NavLink tag={Link} to="/about" style={{color: 'white'}}>About</NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} to="/login" style={{color: 'white'}}>Login</NavLink>
+                </NavItem>
                 
               </Nav>
             </Collapse>
           </Navbar>
-          <Route exact path="/Homepage" component={Homepage} />
+          <Route exact path="/" component={Homepage} />
           <Route path="/Airlines" component={Airlines} />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
+          <Route path="/login" component={login} />
         </div>
       </Router>
     )

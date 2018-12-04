@@ -10,6 +10,12 @@ import {
   CardTitle
 } from 'reactstrap';
 
+import 'firebase/auth';
+import 'firebase/database';
+
+
+
+
 
 export class Airlines extends Component {
   render() {

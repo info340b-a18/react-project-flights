@@ -7,6 +7,10 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom'
 
+import 'firebase/auth';
+import 'firebase/database';
+
+
 
 
 
