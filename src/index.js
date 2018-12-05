@@ -4,21 +4,6 @@ import App from './App';
 
 
 import firebase from 'firebase/app';
-<<<<<<< HEAD
-import 'firebase/auth'; 
-import 'firebase/database';
-
-
-  var config = {
-    apiKey: "AIzaSyD29La4k1_eDq_g-BdJGYzb5E-qxRRaLH8",
-    authDomain: "react-flights.firebaseapp.com",
-    databaseURL: "https://react-flights.firebaseio.com",
-    projectId: "react-flights",
-    storageBucket: "react-flights.appspot.com",
-    messagingSenderId: "408356926270"
-  };
-  firebase.initializeApp(config);
-=======
 import 'firebase/auth';
 
 // Initialize Firebase
@@ -31,6 +16,5 @@ var config = {
     messagingSenderId: "127604908613"
 };
 firebase.initializeApp(config);
->>>>>>> fff0c13a86a2f18824732c40734c219b70927cf4
 
 ReactDOM.render(<App />, document.getElementById('root'));
