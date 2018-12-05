@@ -9,7 +9,10 @@ import './SignupForm.css';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+<<<<<<< HEAD
 
+=======
+>>>>>>> e7ebe787e5068122446d7dccab99c2323915ffc1
 // export class Login extends Component {
 //     constructor(props){
 //         super(props);
@@ -79,7 +82,7 @@ import 'firebase/database';
 //     );
 //     }
 // }
-export class login extends Component {
+export class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {user: null};
@@ -173,5 +176,3 @@ export class login extends Component {
         );
     }
 }
-
-export default login;
