@@ -36,6 +36,7 @@ export class App extends Component {
     };
     
   }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
