@@ -4,7 +4,7 @@ import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
 import { flights } from "./data/flights";
 import { airline } from "./data/airline";
-import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
   Card, CardText, CardBody,
   CardTitle
@@ -12,7 +12,6 @@ import {
 
 import 'firebase/auth';
 import 'firebase/database';
-
 
 
 
@@ -86,21 +85,20 @@ export class Airlines extends Component {
             <div className="box" id="graph">
               <CardBody>
 
-              <CardTitle>Graph</CardTitle>
-              <CardText>This graph demonstrates the maximum and minimum delay time for each airline.</CardText>
-
-                <BarChart width={600} height={300} data={airlineData}
-                  margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="AIRLINE" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
-                  <ReferenceLine y={0} stroke='#000' />
-                  <Brush dataKey='AIRLINE' height={30} stroke="#8884d8" />
-                  <Bar dataKey="max" fill="#8884d8" />
-                  <Bar dataKey="min" fill="#82ca9d" />
-                </BarChart>
+                <CardTitle>Graph</CardTitle>
+                <CardText>This graph demonstrates the maximum and minimum delay time for each airline.</CardText>
+                  <BarChart width={600} height={300} data={airlineData}
+                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="AIRLINE" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
+                    <ReferenceLine y={0} stroke='#000' />
+                    <Brush dataKey='AIRLINE' height={30} stroke="#8884d8" />
+                    <Bar dataKey="max" fill="#8884d8" />
+                    <Bar dataKey="min" fill="#82ca9d" />
+                  </BarChart>
               </CardBody>
             </div>
             <div className="box" id="table">
