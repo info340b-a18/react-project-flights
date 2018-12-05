@@ -5,7 +5,7 @@ import { Homepage } from './Homepage.js';
 import { Airlines } from './Airlines.js';
 import { Region } from './region/Region.js';
 import { About } from './About.js';
-import { Login } from './Login.js'
+import { login } from './login.js'
 
 import 'firebase/auth';
 import 'firebase/database';
@@ -84,7 +84,7 @@ export class App extends Component {
           <Route path="/Airlines" component={Airlines} />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={login} />
         </div>
       </Router>
     )

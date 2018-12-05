@@ -9,7 +9,6 @@ import './SignupForm.css';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import firebase from 'firebase/app';
 
 // export class Login extends Component {
 //     constructor(props){
@@ -105,6 +104,7 @@ export class login extends Component {
     }
     
     handleSignup(email, password, username, airline) {
+        console.log(email + password + username + airline);
         this.setState({errorMessage:null});
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(
             email, password
@@ -125,8 +125,9 @@ export class login extends Component {
         firebase.auth().signInWithEmailAndPassword(
             email, password
         ).catch(function(error) {
-            this.setState({errorMessage: error.message});
             console.log(error.message);
+            this.setState({errorMessage: error.message});
+
         });
     }
 
