@@ -27,7 +27,6 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { airline } from './data/airline.js';
 
 
 export class App extends Component {

@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-import {
-    Card, CardText, CardBody,
-    CardTitle, CardImg, Button
-} from 'reactstrap';
 import SignupForm from './SignupForm';
 import './SignupForm.css';
 import firebase from 'firebase/app';
