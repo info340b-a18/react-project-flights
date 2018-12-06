@@ -10,26 +10,48 @@
     color: #003459;
 }
 
-.signupLoginContainer button {
+.login {
     float: right;
-    margin: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .signup {
+    float: right;
+    margin-left: 0.5rem;
+    margin-right: 0;
     background-color: #003459 !important;
 }
 
 .logout {
-    margin: 4rem;
-    text-align: center;
+    margin: auto;
+    margin-top: 3rem;
+    width: 50%;
+}
+
+.logout p {
+    margin-left: 1rem;
 }
 
 .logout button {
+    margin: auto;
+    width: 100%;
     background-color: hotpink;
 }
 
+<<<<<<< HEAD
 
 DropdownItem {
     background-color: '#003459';
     color: 'white';
 }
+=======
+.dropdown button {
+    margin: auto;
+    width: 100%;
+}
+
+.show {
+    margin: auto;
+    width: 100%;
+}
+>>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089

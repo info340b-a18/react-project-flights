@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-import {
-    Card, CardText, CardBody,
-    CardTitle, CardImg, Button
-} from 'reactstrap';
 import SignupForm from './SignupForm';
 import './SignupForm.css';
 import firebase from 'firebase/app';
@@ -52,7 +47,7 @@ export class Login extends Component {
     }
     
     handleSignup(email, password, username, airline) {
-        console.log(email + password + username + airline);
+        //console.log(email + password + username + airline);
         this.setState({errorMessage:null});
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(
             email, password
@@ -60,8 +55,10 @@ export class Login extends Component {
             let user = userCredentials.user;
             user.updateProfile({
                 displayName: username,
-                airline: airline
+                // airline: airline
             })
+
+            //console.log(user.uid);
         }).catch(function(error) {
             this.setState({errorMessage: error.message});
         }.bind(this));
@@ -72,9 +69,10 @@ export class Login extends Component {
         firebase.auth().signInWithEmailAndPassword(
             email, password
         ).catch(function(error) {
+            console.log(this.props.airlinename);
             console.log(error.message);
             this.setState({errorMessage: error.message});
-        });
+        }.bind(this));
     }
 
     handleSignOut(){
@@ -105,7 +103,6 @@ export class Login extends Component {
             </div>
             );
         } else {
-
             //this.props.returnLoginState(this.state.user)
             content = (
             <div className="logout">
@@ -192,6 +189,7 @@ export class Login extends Component {
             </Dropdown>
             </div>
 
+<<<<<<< HEAD
         </form>
             {this.state.user &&
                 <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
@@ -208,6 +206,15 @@ export class Login extends Component {
                 }}>
                  Update Profile
              </button> */}
+=======
+                </form>
+                {this.state.user &&
+                    <button className="logout btn" style={{'background-color': '#003459', 'color': 'white'}} 
+                            onClick={() => this.handleSignOut()}>
+                    Log Out
+                    </button>
+                }
+>>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089
             </div>
 
             );

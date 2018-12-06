@@ -4,7 +4,7 @@ import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
 import { flights } from "./data/flights";
 import { airline } from "./data/airline";
-import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import {
   Card, CardText, CardBody,
   CardTitle
