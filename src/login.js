@@ -47,18 +47,21 @@ export class Login extends Component {
     }
     
     handleSignup(email, password, username, airline) {
-        //console.log(email + password + username + airline);
+
+        console.log(email + password + username + airline);
         this.setState({errorMessage:null});
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(
             email, password
         ).then((userCredentials) => {
             let user = userCredentials.user;
+            console.log(airline);
             user.updateProfile({
+                'airline': airline,
                 displayName: username,
-                // airline: airline
+                
             })
 
-            //console.log(user.uid);
+            console.log(user);
         }).catch(function(error) {
             this.setState({errorMessage: error.message});
         }.bind(this));

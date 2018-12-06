@@ -11,18 +11,20 @@ class SignupForm extends Component {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state = {
-            'email': undefined,
-            'password': undefined,
-            'username': undefined,
-            'airline': undefined,
+            email: undefined,
+            password: undefined,
+            username: undefined,
+            airline: undefined,
             dropdownOpen: false,
             airlinename: undefined
         }; 
     }
 
+
     handleChange(event) {
         let field = event.target.name;
         let value = event.target.value;
+        console.log(field + " " + value)
         let changes = {};
         changes[field] = value;
         this.setState(changes);
@@ -34,6 +36,7 @@ class SignupForm extends Component {
 
     handleSignup(event) {
         event.preventDefault();
+        console.log(this.state.airline);
         this.props.signupCallback(
             this.state.email,
             this.state.password,
@@ -46,9 +49,10 @@ class SignupForm extends Component {
         event.preventDefault();
         this.props.loginCallback(
             this.state.email, this.state.password
-        ).then(() => {
-            firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airlinename);
-        });
+        )
+        // .then(() => {
+        //     firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airline);
+        // });
         //console.log(this.state.airlinename);
         //firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airlinename);
     }
@@ -60,6 +64,8 @@ class SignupForm extends Component {
     }
 
     render() {
+        
+        console.log(this.state)
         return (
         <form>
             <div className="form-group">
@@ -107,20 +113,23 @@ class SignupForm extends Component {
                 }
                 </DropdownToggle >
                 <DropdownMenu className="col-12">
-                    <DropdownItem className="col-12" value="all" onClick={(e) => this.setState({airlinename: "Show All"})}>Show All</DropdownItem >
-                    <DropdownItem className="col-12" value="UA" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
-                    <DropdownItem className="col-12" value="AA" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="US" onClick={(e) => this.setState({airlinename: "US Airways"})}>US Airways</DropdownItem>
-                    <DropdownItem className="col-12" value="F9" onClick={(e) => this.setState({airlinename: "Frontier Airlines"})}>Frontier Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="B6" onClick={(e) => this.setState({airlinename: "JetBlue Airways"})}>JetBlue Airways</DropdownItem>
-                    <DropdownItem className="col-12" value="OO" onClick={(e) => this.setState({airlinename: "Skywest Airlines"})}>Skywest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="AS" onClick={(e) => this.setState({airlinename: "Alaska Airlines"})}>Alaska Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="WN" onClick={(e) => this.setState({airlinename: "Spirit Air Lines"})}>Spirit Air Lines</DropdownItem>
-                    <DropdownItem className="col-12" value="DL" onClick={(e) => this.setState({airlinename: "Southwest Airlines"})}>Southwest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="EV" onClick={(e) => this.setState({airlinename: "Atlantic Southeast Airlines"})}>Atlantic Southeast Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="HA" onClick={(e) => this.setState({airlinename: "Hawaiian Airlines"})}>Hawaiian Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="MQ" onClick={(e) => this.setState({airlinename: "American Eagle Airlines"})}>American Eagle Airlines</DropdownItem>
-                    <DropdownItem className="col-12" value="VX" onClick={(e) => this.setState({airlinename: "Virgin America"})}>Virgin America</DropdownItem>
+                <DropdownItem className="col-12" value="all" type="airline" name="airline"  onClick={
+                    (e) => {this.setState({airlinename: "Show All"}); 
+                            this.handleChange(e);}}
+                    >Show All</DropdownItem >
+                    <DropdownItem className="col-12" value="UA"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "United Airlines"}); this.handleChange(e);}}>United Airlines</DropdownItem >
+                    <DropdownItem className="col-12" value="AA"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "American Airlines"}); this.handleChange(e);}}>American Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="US"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "US Airways"}); this.handleChange(e);}}>US Airways</DropdownItem>
+                    <DropdownItem className="col-12" value="F9"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Frontier Airlines"}); this.handleChange(e);}}>Frontier Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="B6"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "JetBlue Airways"}); this.handleChange(e);}}>JetBlue Airways</DropdownItem>
+                    <DropdownItem className="col-12" value="OO"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Skywest Airlines"}); this.handleChange(e);}}>Skywest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="AS"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Alaska Airlines"}); this.handleChange(e);}}>Alaska Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="WN"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Spirit Air Lines"}); this.handleChange(e);}}>Spirit Air Lines</DropdownItem>
+                    <DropdownItem className="col-12" value="DL"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Southwest Airlines"}); this.handleChange(e);}}>Southwest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="EV"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Atlantic Southeast Airlines"}); this.handleChange(e);}}>Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="HA"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Hawaiian Airlines"}); this.handleChange(e);}}>Hawaiian Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="MQ"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "American Eagle Airlines"}); this.handleChange(e);}}>American Eagle Airlines</DropdownItem>
+                    <DropdownItem className="col-12" value="VX"  type="airline" name="airline" onChange={(e) => this.handleChange(e)} onClick={(e) => {this.setState({airlinename: "Virgin America"}); this.handleChange(e);}}>Virgin America</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
             {/* <input className="form-control" 
