@@ -7,6 +7,8 @@ import { Region } from './region/Region.js';
 import { About } from './About.js';
 import { Login } from './login.js'
 
+import firebase from 'firebase/app';
+
 import 'firebase/auth';
 import 'firebase/database';
 
@@ -34,22 +36,43 @@ export class App extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      loginState: {}
+      loginState: {},
+      user: null
     };
-    //var loginState = {};
+    this.loginState = {};
   }
   
   getLoginState = (loginStateFromLoginPage) => {
-    this.state.loginState = {
+    console.log("test")
+    this.loginState = {
     //this.setState({
       email: loginStateFromLoginPage.email,
       password: loginStateFromLoginPage.password,
       displayName: loginStateFromLoginPage.displayName,
       airline: loginStateFromLoginPage.airline
     };
-    //console.log(this.state.email);
+    console.log(loginStateFromLoginPage);
   }
 
+
+  componentDidMount() {
+    this.authUnRegFunc = firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            this.setState({
+                user: user
+            });
+        } else {
+            this.setState({
+                user: null
+            });
+        }
+    });
+}
+
+componentWillMount() {
+    return this.authUnRegFunc;
+}
+  
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
@@ -87,7 +110,14 @@ export class App extends Component {
                   <NavLink tag={Link} to="/about" style={{color: 'white'}}>About</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} to="/login" style={{color: 'white'}}>Login</NavLink>
+                  <NavLink tag={Link} to="/login" style={{color: 'white'}}>
+                  {console.log(this.state.user)}
+                  {this.state.user !== null?
+                  this.state.user.displayName
+                  :
+                   "Login"
+                  }                  
+                  </NavLink>
                 </NavItem>
                 
               </Nav>
@@ -99,7 +129,8 @@ export class App extends Component {
           <Route path="/about" component={About} />
           {/* <Route path="/login" component={Login} /> */}
           <Route path="/login" render={ () => {
-            return <Login returnLoginState={this.getLoginState} />
+            return <Login />
+            // return <Login returnLoginState={this.getLoginState} />
           } } />
         </div>
       </Router>

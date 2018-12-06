@@ -92,7 +92,8 @@ export class Login extends Component {
             </div>
             );
         } else {
-            this.props.returnLoginState(this.state.user);
+
+            //this.props.returnLoginState(this.state.user)
             content = (
             <div className="logout">
                        <form>
