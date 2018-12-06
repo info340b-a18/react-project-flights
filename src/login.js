@@ -189,7 +189,6 @@ export class Login extends Component {
             </Dropdown>
             </div>
 
-<<<<<<< HEAD
         </form>
             {this.state.user &&
                 <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
@@ -206,15 +205,6 @@ export class Login extends Component {
                 }}>
                  Update Profile
              </button> */}
-=======
-                </form>
-                {this.state.user &&
-                    <button className="logout btn" style={{'background-color': '#003459', 'color': 'white'}} 
-                            onClick={() => this.handleSignOut()}>
-                    Log Out
-                    </button>
-                }
->>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089
             </div>
 
             );

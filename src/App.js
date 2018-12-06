@@ -41,20 +41,6 @@ export class App extends Component {
     this.loginState = {};
   }
   
-<<<<<<< HEAD
-
-  getLoginState = (loginStateFromLoginPage) => {
-    console.log("test")
-    this.loginState = {
-    //this.setState({
-      email: loginStateFromLoginPage.email,
-      password: loginStateFromLoginPage.password,
-      displayName: loginStateFromLoginPage.displayName,
-      airline: loginStateFromLoginPage.airline
-    };
-    console.log(loginStateFromLoginPage);
-  }
-=======
   // getLoginState = (loginStateFromLoginPage) => {
   //   console.log("test")
   //   this.loginState = {
@@ -66,7 +52,6 @@ export class App extends Component {
   //   };
   //   console.log(loginStateFromLoginPage);
   // }
->>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089
 
 
   componentDidMount() {
@@ -125,10 +110,6 @@ componentWillMount() {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} to="/login" style={{color: 'white'}}>
-<<<<<<< HEAD
-=======
-                  {/* {console.log(this.state.user)} */}
->>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089
                   {this.state.user !== null?
                   this.state.user.displayName
                   :
