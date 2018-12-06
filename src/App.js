@@ -83,7 +83,7 @@ componentWillMount() {
       <Router>
         <div>
           <Navbar color="light" light expand="md" fixed="top">
-            <NavbarBrand to="/" style={{color: 'white'}}>Flight</NavbarBrand>
+            <NavbarBrand tag={Link} to="/" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar >
@@ -123,7 +123,8 @@ componentWillMount() {
             </Collapse>
           </Navbar>
           <Route exact path="/" component={Homepage} />
-          <Route path="/Airlines" component={Airlines} />
+          <Route path="/Airlines" render={ () => {
+            return <Airlines airline={this.state.user.airline} />} } />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
           {/* <Route path="/login" component={Login} /> */}
