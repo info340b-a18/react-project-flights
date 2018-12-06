@@ -14,9 +14,6 @@ import 'firebase/auth';
 import 'firebase/database';
 import Switch from "react-switch";
 
-
-
-
 export class Airlines extends Component {
 
   constructor(props) {
