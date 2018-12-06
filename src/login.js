@@ -19,7 +19,18 @@ export class Login extends Component {
         this.toggle = this.toggle.bind(this);
 
         this.state = {user: null,
-                      dropdownOpen: false};
+            'username': undefined,
+            'airline': undefined,
+            airlinename: "UA",
+             dropdownOpen: false};
+    }
+
+    handleChange(event) {
+        let field = event.target.name;
+        let value = event.target.value;
+        let changes = {};
+        changes[field] = value;
+        this.setState(changes);
     }
 
     componentDidMount() {
@@ -182,13 +193,23 @@ export class Login extends Component {
             </div>
 
         </form>
-                {this.state.user &&
-                    <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
-                            onClick={() => this.handleSignOut()}>
-                    Log Out
-                    </button>
-                }
+            {this.state.user &&
+                <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
+                        onClick={() => this.handleSignOut()}>
+                Log Out
+                </button>
+            }
+            {/* <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
+                onClick={() => {
+                    firebase.user.updateProfie({
+                        displayName: this.state.username,
+                        airline: this.state.airline
+                    })
+                }}>
+                 Update Profile
+             </button> */}
             </div>
+
             );
         }
         return (

@@ -42,6 +42,7 @@ export class App extends Component {
     this.loginState = {};
   }
   
+
   getLoginState = (loginStateFromLoginPage) => {
     console.log("test")
     this.loginState = {
@@ -124,7 +125,7 @@ componentWillMount() {
           </Navbar>
           <Route exact path="/" component={Homepage} />
           <Route path="/Airlines" render={ () => {
-            return <Airlines airline={this.state.user.airline} />} } />
+            return <Airlines  />} } />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
           {/* <Route path="/login" component={Login} /> */}
