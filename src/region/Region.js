@@ -13,19 +13,16 @@ export class Region extends Component {
     return airports.map(
       
       (airports) => {
+        var myCustomColour
         var size
-        if(airports.direct_flights < 25){
-          size = airports.direct_flights *30;
-        }
-        if(airports.direct_flights < 50) {
-          size = airports.direct_flights *5;
+        if(airports.direct_flights < 100) {
+          size = 90;
+          myCustomColour = 'red'
         }
         else {
-          size = airports.direct_flights;
+          size = 250;
+          myCustomColour = '#003459'
         }
-
-        const myCustomColour = '#583470'
-        const size = airports.direct_flights
         const markerHtmlStyles = `background-color: ${myCustomColour};
                                   width: ${size}%;
                                   height: ${size}%;
