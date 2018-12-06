@@ -111,7 +111,6 @@ componentWillMount() {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} to="/login" style={{color: 'white'}}>
-                  {console.log(this.state.user)}
                   {this.state.user !== null?
                   this.state.user.displayName
                   :

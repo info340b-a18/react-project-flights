@@ -11,6 +11,8 @@ import 'firebase/auth';
 import 'firebase/database';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
+import './SignupForm'
+
 export class Login extends Component {
     constructor(props) {
         super(props);
@@ -99,7 +101,7 @@ export class Login extends Component {
                        <form>
             <div className="form-group">
             <label htmlFor="email">Email</label>
-            <p>{this.state.user.email}</p>
+            <p style={{ 'border-style': 'solid', 'border-width': '1px', 'border-color':'rgb(211,211,211)', 'padding':'7px'}}>{this.state.user.email}</p>
             </div>
             
             <div className="form-group">

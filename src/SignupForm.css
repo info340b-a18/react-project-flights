@@ -27,3 +27,9 @@
 .logout button {
     background-color: hotpink;
 }
+
+
+DropdownItem {
+    background-color: '#003459';
+    color: 'white';
+}
