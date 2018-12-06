@@ -4,14 +4,18 @@ import './SignupForm.css';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 class SignupForm extends Component {
     constructor(props){
         super(props);
+        this.toggle = this.toggle.bind(this);
         this.state = {
             'email': undefined,
             'password': undefined,
             'username': undefined,
-            'airline': undefined
+            'airline': undefined,
+            dropdownOpen: false
         }; 
     }
 
@@ -38,6 +42,12 @@ class SignupForm extends Component {
         this.props.loginCallback(
             this.state.email, this.state.password
         );
+    }
+
+    toggle() {
+        this.setState(prevState => ({
+          dropdownOpen: !prevState.dropdownOpen
+        }));
     }
 
     render() {
@@ -78,6 +88,28 @@ class SignupForm extends Component {
     
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
+            {/* dropdownmenu */}
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <DropdownToggle caret>
+                Choose your favorite airline
+                </DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem value="all">Show All</DropdownItem >
+                    <DropdownItem value="UA">United Airlines</DropdownItem >
+                    <DropdownItem value="AA">American Airlines</DropdownItem>
+                    <DropdownItem value="US">US Airways</DropdownItem>
+                    <DropdownItem value="F9">Frontier Airlines</DropdownItem>
+                    <DropdownItem value="B6">JetBlue Airways</DropdownItem>
+                    <DropdownItem value="OO">Skywest Airlines</DropdownItem>
+                    <DropdownItem value="AS">Alaska Airlines</DropdownItem>
+                    <DropdownItem value="WN">Spirit Air Lines</DropdownItem>
+                    <DropdownItem value="DL">Southwest Airlines</DropdownItem>
+                    <DropdownItem value="EV">Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem value="HA">Hawaiian Airlines</DropdownItem>
+                    <DropdownItem value="MQ">American Eagle Airlines</DropdownItem>
+                    <DropdownItem value="VX">Virgin America</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
             <input className="form-control" 
                 id="airline"
                 type="airline"

@@ -9,6 +9,7 @@ import './SignupForm.css';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 // export class Login extends Component {
 //     constructor(props){
@@ -82,7 +83,10 @@ import 'firebase/database';
 export class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {user: null};
+        this.toggle = this.toggle.bind(this);
+
+        this.state = {user: null,
+                      dropdownOpen: false};
     }
 
     componentDidMount() {
@@ -115,8 +119,8 @@ export class Login extends Component {
                 airline: airline
             })
         }).catch(function(error) {
-            this.setState({errorMessage: error.message});
             console.log(error.message);
+            this.setState({errorMessage: error.message});
         }.bind(this));
     }
     
@@ -140,6 +144,12 @@ export class Login extends Component {
         });
       }
 
+      toggle() {
+        this.setState(prevState => ({
+          dropdownOpen: !prevState.dropdownOpen
+        }));
+    }
+
     render() {
         if(!this.state.user) {
             var content = (
@@ -154,6 +164,62 @@ export class Login extends Component {
         } else {
             content = (
             <div className="logout">
+                       <form>
+            <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <p>{this.state.user.email}</p>
+            </div>
+            
+            <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <p>{this.state.user.password}</p>
+            </div>
+    
+            <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input className="form-control" 
+                id="username" 
+                type="username"
+                name="displayName"
+                placeholder={this.state.user.displayName}
+                onChange={(e) => this.handleChange(e)}
+            />
+            </div>
+    
+            <div className="form-group">
+            <label htmlFor="airline">Airline</label>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                <DropdownToggle caret>
+                {this.state.user.airline}
+                </DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem value="all">Show All</DropdownItem >
+                    <DropdownItem value="UA">United Airlines</DropdownItem >
+                    <DropdownItem value="AA">American Airlines</DropdownItem>
+                    <DropdownItem value="US">US Airways</DropdownItem>
+                    <DropdownItem value="F9">Frontier Airlines</DropdownItem>
+                    <DropdownItem value="B6">JetBlue Airways</DropdownItem>
+                    <DropdownItem value="OO">Skywest Airlines</DropdownItem>
+                    <DropdownItem value="AS">Alaska Airlines</DropdownItem>
+                    <DropdownItem value="WN">Spirit Air Lines</DropdownItem>
+                    <DropdownItem value="DL">Southwest Airlines</DropdownItem>
+                    <DropdownItem value="EV">Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem value="HA">Hawaiian Airlines</DropdownItem>
+                    <DropdownItem value="MQ">American Eagle Airlines</DropdownItem>
+                    <DropdownItem value="VX">Virgin America</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
+            </div>
+    
+            {/* <div className="form-group">
+            <button className="signup btn btn-primary mr-2" onClick={(e) => this.handleSignup(e)}>
+                Sign Up
+            </button>
+            <button className="login btn btn-primary" onClick={(e) => this.handleLogin(e)}>
+                Login
+            </button>
+            </div> */}
+        </form>
                 {this.state.user &&
                     <button className="logout btn btn-warning" 
                             onClick={() => this.handleSignOut()}>

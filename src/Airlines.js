@@ -12,11 +12,24 @@ import {
 
 import 'firebase/auth';
 import 'firebase/database';
+import Switch from "react-switch";
 
 
 
 
 export class Airlines extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {checked: false};
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(checked) {
+    this.setState({ checked });
+  }
+
+
   render() {
     const data = flights
 
@@ -104,6 +117,14 @@ export class Airlines extends Component {
             <div className="box" id="table">
               <CardBody>
                 <CardTitle>Table</CardTitle>
+                <label htmlFor="normal-switch">
+                  <span>Highlight your Airline</span>
+                  <Switch
+                    onChange={this.handleChange}
+                    checked={this.state.checked}
+                    id="normal-switch"
+                  />
+                </label>
                 <CardText>You can sort by clicking on the column names.</CardText>
                 < ReactTable
                   data={data}
