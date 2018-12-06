@@ -15,7 +15,8 @@ class SignupForm extends Component {
             'password': undefined,
             'username': undefined,
             'airline': undefined,
-            dropdownOpen: false
+            dropdownOpen: false,
+            airlinename: undefined
         }; 
     }
 
@@ -89,25 +90,30 @@ class SignupForm extends Component {
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
             {/* dropdownmenu */}
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown  isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                 <DropdownToggle caret>
-                Choose your favorite airline
-                </DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem value="all">Show All</DropdownItem >
-                    <DropdownItem value="UA">United Airlines</DropdownItem >
-                    <DropdownItem value="AA">American Airlines</DropdownItem>
-                    <DropdownItem value="US">US Airways</DropdownItem>
-                    <DropdownItem value="F9">Frontier Airlines</DropdownItem>
-                    <DropdownItem value="B6">JetBlue Airways</DropdownItem>
-                    <DropdownItem value="OO">Skywest Airlines</DropdownItem>
-                    <DropdownItem value="AS">Alaska Airlines</DropdownItem>
-                    <DropdownItem value="WN">Spirit Air Lines</DropdownItem>
-                    <DropdownItem value="DL">Southwest Airlines</DropdownItem>
-                    <DropdownItem value="EV">Atlantic Southeast Airlines</DropdownItem>
-                    <DropdownItem value="HA">Hawaiian Airlines</DropdownItem>
-                    <DropdownItem value="MQ">American Eagle Airlines</DropdownItem>
-                    <DropdownItem value="VX">Virgin America</DropdownItem>
+
+                {this.state.airlinename === undefined?
+                    "Choose your airline"
+                    :
+                    this.state.airlinename
+            }
+                </DropdownToggle >
+                <DropdownMenu >
+                    <DropdownItem value="all" onClick={(e) => this.setState({airlinename: "Show All"})}>Show All</DropdownItem >
+                    <DropdownItem value="UA" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
+                    <DropdownItem value="AA" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
+                    <DropdownItem value="US" onClick={(e) => this.setState({airlinename: "US Airways"})}>US Airways</DropdownItem>
+                    <DropdownItem value="F9" onClick={(e) => this.setState({airlinename: "Frontier Airlines"})}>Frontier Airlines</DropdownItem>
+                    <DropdownItem value="B6" onClick={(e) => this.setState({airlinename: "JetBlue Airways"})}>JetBlue Airways</DropdownItem>
+                    <DropdownItem value="OO" onClick={(e) => this.setState({airlinename: "Skywest Airlines"})}>Skywest Airlines</DropdownItem>
+                    <DropdownItem value="AS" onClick={(e) => this.setState({airlinename: "Alaska Airlines"})}>Alaska Airlines</DropdownItem>
+                    <DropdownItem value="WN" onClick={(e) => this.setState({airlinename: "Spirit Air Lines"})}>Spirit Air Lines</DropdownItem>
+                    <DropdownItem value="DL" onClick={(e) => this.setState({airlinename: "Southwest Airlines"})}>Southwest Airlines</DropdownItem>
+                    <DropdownItem value="EV" onClick={(e) => this.setState({airlinename: "Atlantic Southeast Airlines"})}>Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem value="HA" onClick={(e) => this.setState({airlinename: "Hawaiian Airlines"})}>Hawaiian Airlines</DropdownItem>
+                    <DropdownItem value="MQ" onClick={(e) => this.setState({airlinename: "American Eagle Airlines"})}>American Eagle Airlines</DropdownItem>
+                    <DropdownItem value="VX" onClick={(e) => this.setState({airlinename: "Virgin America"})}>Virgin America</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
             <input className="form-control" 
