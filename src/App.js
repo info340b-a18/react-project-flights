@@ -42,17 +42,17 @@ export class App extends Component {
     this.loginState = {};
   }
   
-  getLoginState = (loginStateFromLoginPage) => {
-    console.log("test")
-    this.loginState = {
-    //this.setState({
-      email: loginStateFromLoginPage.email,
-      password: loginStateFromLoginPage.password,
-      displayName: loginStateFromLoginPage.displayName,
-      airline: loginStateFromLoginPage.airline
-    };
-    console.log(loginStateFromLoginPage);
-  }
+  // getLoginState = (loginStateFromLoginPage) => {
+  //   console.log("test")
+  //   this.loginState = {
+  //   //this.setState({
+  //     email: loginStateFromLoginPage.email,
+  //     password: loginStateFromLoginPage.password,
+  //     displayName: loginStateFromLoginPage.displayName,
+  //     airline: loginStateFromLoginPage.airline
+  //   };
+  //   console.log(loginStateFromLoginPage);
+  // }
 
 
   componentDidMount() {
@@ -111,7 +111,7 @@ componentWillMount() {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} to="/login" style={{color: 'white'}}>
-                  {console.log(this.state.user)}
+                  {/* {console.log(this.state.user)} */}
                   {this.state.user !== null?
                   this.state.user.displayName
                   :

@@ -10,20 +10,40 @@
     color: #003459;
 }
 
-.signupLoginContainer button {
+.login {
     float: right;
-    margin: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .signup {
+    float: right;
+    margin-left: 0.5rem;
+    margin-right: 0;
     background-color: #003459 !important;
 }
 
 .logout {
-    margin: 4rem;
-    text-align: center;
+    margin: auto;
+    margin-top: 3rem;
+    width: 50%;
+}
+
+.logout p {
+    margin-left: 1rem;
 }
 
 .logout button {
+    margin: auto;
+    width: 100%;
     background-color: hotpink;
+}
+
+.dropdown button {
+    margin: auto;
+    width: 100%;
+}
+
+.show {
+    margin: auto;
+    width: 100%;
 }

@@ -28,6 +28,10 @@ class SignupForm extends Component {
         this.setState(changes);
     }
 
+    // handleAirlineChange(event, selectedIndex, menulItem) {
+
+    // }
+
     handleSignup(event) {
         event.preventDefault();
         this.props.signupCallback(
@@ -42,7 +46,11 @@ class SignupForm extends Component {
         event.preventDefault();
         this.props.loginCallback(
             this.state.email, this.state.password
-        );
+        ).then(() => {
+            firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airlinename);
+        });
+        //console.log(this.state.airlinename);
+        //firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airlinename);
     }
 
     toggle() {
@@ -90,16 +98,18 @@ class SignupForm extends Component {
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
             {/* dropdownmenu */}
-            <Dropdown  isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                 <DropdownToggle caret>
 
                 {this.state.airlinename === undefined?
                     "Choose your airline"
                     :
                     this.state.airlinename
-            }
+                }
                 </DropdownToggle >
-                <DropdownMenu >
+
+                {/* <DropdownMenu onChange={this.handleAirlineChange}> */}
+                <DropdownMenu>
                     <DropdownItem value="all" onClick={(e) => this.setState({airlinename: "Show All"})}>Show All</DropdownItem >
                     <DropdownItem value="UA" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
                     <DropdownItem value="AA" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
@@ -116,13 +126,13 @@ class SignupForm extends Component {
                     <DropdownItem value="VX" onClick={(e) => this.setState({airlinename: "Virgin America"})}>Virgin America</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
-            <input className="form-control" 
+            {/* <input className="form-control" 
                 id="airline"
                 type="airline"
                 name="airline"
                 placeholder="required only when signup"
                 onChange={(e) => this.handleChange(e)} 
-                />
+                /> */}
             </div>
     
             <div className="form-group">
