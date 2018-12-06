@@ -25,6 +25,7 @@ import {
 } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import { airline } from './data/airline.js';
 
 
 export class App extends Component {
@@ -32,9 +33,21 @@ export class App extends Component {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      loginState: {}
     };
-    
+    //var loginState = {};
+  }
+  
+  getLoginState = (loginStateFromLoginPage) => {
+    this.state.loginState = {
+    //this.setState({
+      email: loginStateFromLoginPage.email,
+      password: loginStateFromLoginPage.password,
+      displayName: loginStateFromLoginPage.displayName,
+      airline: loginStateFromLoginPage.airline
+    };
+    //console.log(this.state.email);
   }
 
   toggle() {
@@ -84,7 +97,10 @@ export class App extends Component {
           <Route path="/Airlines" component={Airlines} />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} /> */}
+          <Route path="/login" render={ () => {
+            return <Login returnLoginState={this.getLoginState} />
+          } } />
         </div>
       </Router>
     )
