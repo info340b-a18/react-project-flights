@@ -38,6 +38,13 @@
     background-color: hotpink;
 }
 
+<<<<<<< HEAD
+
+DropdownItem {
+    background-color: '#003459';
+    color: 'white';
+}
+=======
 .dropdown button {
     margin: auto;
     width: 100%;
@@ -47,3 +54,4 @@
     margin: auto;
     width: 100%;
 }
+>>>>>>> b41b1f5c7fb6e1b01c0572597fab244605fc2089
