@@ -31,9 +31,8 @@ export class Airlines extends Component {
     }
     console.log(this.state.checked)
     if(this.props.user !== null && this.state.checked === false) {
-      firebase.database().ref(this.props.user.uid).on('value', (snapshot) => this.setState({'airline' : snapshot.val().text}))
+      firebase.database().ref('users').child(this.props.user.uid).on('value', (snapshot) => this.setState({'airline' : snapshot.val().text}))
     }
-
   }
 
 
