@@ -154,11 +154,9 @@ export class Airlines extends Component {
                 </label>
                 < ReactTable
                   getTrProps={(state,rowInfo)=> {
-                    
                     return {
                         style: {
-                          
-                          background: rowInfo.row.AIRLINES == 'AS - Alaska Airlines' ? "blue" : "red"
+                          background: rowInfo.row.AIRLINE == this.state.airline ? "yellow" : "white"
                       }
                     }
                   }
