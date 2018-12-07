@@ -144,6 +144,17 @@ export class Airlines extends Component {
                   />
                 </label>
                 < ReactTable
+                  getTrProps={(state,rowInfo)=> {
+                    
+                    return {
+                        style: {
+                          
+                          background: rowInfo.row.AIRLINES == 'AS - Alaska Airlines' ? "blue" : "red"
+                      }
+                    }
+                  }
+
+                  }
                   data={data}
                   minRows={10}
                   filterable
