@@ -47,20 +47,20 @@ export class Airlines extends Component {
           value={filter ? filter.value : "all"}
         >
           <option value="all">Show All</option>
-          <option value="UA">United Airlines</option>
-          <option value="NK">Spirit Airlines</option>
-          <option value="AA">American Airlines</option>
-          <option value="US">US Airways</option>
-          <option value="F9">Frontier Airlines</option>
-          <option value="B6">JetBlue Airways</option>
-          <option value="OO">Skywest Airlines</option>
-          <option value="AS">Alaska Airlines</option>
-          <option value="WN">Southwest AirLines</option>
-          <option value="DL">Delta Airlines</option>
-          <option value="EV">Atlantic Southeast Airlines</option>
-          <option value="HA">Hawaiian Airlines</option>
-          <option value="MQ">American Eagle Airlines</option>
-          <option value="VX">Virgin America</option>
+          <option value="UA - United Airlines">United Airlines</option>
+          <option value="NK - Spirit Airlines">Spirit Airlines</option>
+          <option value="AA - American Airlines">American Airlines</option>
+          <option value="US - US Airways">US Airways</option>
+          <option value="F9 - Frontier Airlines">Frontier Airlines</option>
+          <option value="B6 - JetBlue Airways">JetBlue Airways</option>
+          <option value="OO - Skywest Airlines">Skywest Airlines</option>
+          <option value="AS - Alaska Airlines">Alaska Airlines</option>
+          <option value="WN - Southwest Airlines">Southwest AirLines</option>
+          <option value="DL - Delta Airlines">Delta Airlines</option>
+          <option value="EV - Atlantic Southeast Airlines">Atlantic Southeast Airlines</option>
+          <option value="HA - Hawaiian Airlines">Hawaiian Airlines</option>
+          <option value="MQ - American Eagle Airlines">American Eagle Airlines</option>
+          <option value="VX - Virgin America">Virgin America</option>
         </select>
     }, {
       Header: 'Origin Airport',
