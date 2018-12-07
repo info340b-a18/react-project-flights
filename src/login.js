@@ -164,7 +164,7 @@ export class Login extends Component {
                        <form>
             <div className="form-group">
             <label htmlFor="email">Email</label>
-            <p style={{ 'borderStyle': 'solid', 'borderWidth': '1px', 'borderColor':'rgb(211,211,211)', 'padding':'7px'}}>{this.state.user.email}</p>
+            <p style={{ 'borderStyle': 'solid', 'borderWidth': '1px', 'borderColor':'rgb(211,211,211)', 'padding':'7px', 'width': '100%', 'margin-left': '0'}}>{this.state.user.email}</p>
             </div>
             
             <div className="form-group">
@@ -192,11 +192,11 @@ export class Login extends Component {
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
             
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white'}}>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}}>
+                <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}}>
                 {this.state.airline}
                 </DropdownToggle>
-                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}}>
+                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'border-radius': '8px'}}>
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
                                                                                                                             this.setState({airlinename: "Show All"})
                                                                                                                             this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
@@ -219,13 +219,7 @@ export class Login extends Component {
             </div>
 
         </form>
-            {this.state.user &&
-                <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
-                        onClick={() => this.handleSignOut()}>
-                Log Out
-                </button>
-            }
-            <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
+        <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'margin-bottom':'1rem', 'border-radius': '8px'}} 
                 onClick={() => {
                     var userid = this.state.user.uid;
                 firebase.database().ref('users').child(userid)
@@ -236,6 +230,13 @@ export class Login extends Component {
                 }}>
                  Update Profile
              </button>
+            {this.state.user &&
+                <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}} 
+                        onClick={() => this.handleSignOut()}>
+                Log Out
+                </button>
+            }
+            
             </div>
 
             );

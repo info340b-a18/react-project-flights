@@ -141,11 +141,11 @@ export class Airlines extends Component {
                 <CardTitle>Airline Information</CardTitle>
 
                 <CardText>This table contains airline information including origin airport, destination airport and departure delay.
-                  You can filter airlines and sort the data alphabetically by clicking on the column names. In addition, Your preferred
+                  You can filter airlines and sort the data alphabetically by clicking on the column names. In addition, if you click highlight your  airline, your preferred
                   airline will be highlighted.
                  </CardText>
                 <label htmlFor="normal-switch">
-                  <span>Highlight your Airline</span>
+                  <span>Highlight Your Airline</span>
                   <Switch
                     onChange={this.handleChange}
                     checked={this.state.checked}
@@ -160,7 +160,6 @@ export class Airlines extends Component {
                       }
                     }
                   }
-
                   }
                   data={data}
                   minRows={10}

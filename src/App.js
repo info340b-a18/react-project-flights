@@ -81,7 +81,7 @@ componentWillMount() {
     return (
       <Router>
         <div>
-          <Navbar color="light" light expand="md" fixed="top">
+          <Navbar color="dark" dark expand="md" fixed="top">
             <NavbarBrand tag={Link} to="/" style={{color: 'white'}}>Flight</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
