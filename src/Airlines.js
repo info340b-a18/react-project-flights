@@ -48,6 +48,7 @@ export class Airlines extends Component {
         >
           <option value="all">Show All</option>
           <option value="UA">United Airlines</option>
+          <option value="NK">Spirit Airlines</option>
           <option value="AA">American Airlines</option>
           <option value="US">US Airways</option>
           <option value="F9">Frontier Airlines</option>
