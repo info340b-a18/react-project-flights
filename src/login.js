@@ -56,12 +56,8 @@ export class Login extends Component {
             let user = userCredentials.user;
             console.log(airline);
             user.updateProfile({
-                'airline': airline,
-                displayName: username,
-                
+                displayName: username                
             })
-
-            console.log(user);
         }).catch(function(error) {
             this.setState({errorMessage: error.message});
         }.bind(this));
@@ -174,7 +170,9 @@ export class Login extends Component {
                 {this.state.user.airline}
                 </DropdownToggle>
                 <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => this.setState({airlinename: "Show All"})}>Show All</DropdownItem >
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
+                                                                                                                            this.setState({airlinename: "Show All"})
+                                                                                                                            this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="UA" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AA" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="US" onClick={(e) => this.setState({airlinename: "US Airways"})}>US Airways</DropdownItem>
@@ -199,15 +197,17 @@ export class Login extends Component {
                 Log Out
                 </button>
             }
-            {/* <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
+            <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
                 onClick={() => {
-                    firebase.user.updateProfie({
-                        displayName: this.state.username,
-                        airline: this.state.airline
-                    })
+                    var userid = this.state.user.uid;
+                    console.log(firebase.database().ref('flight'))
+                firebase.database().ref('flight').push({[userid]:this.state.airline})
+                .then()
+                .catch(err => console.log(err))
+                ;
                 }}>
                  Update Profile
-             </button> */}
+             </button>
             </div>
 
             );
