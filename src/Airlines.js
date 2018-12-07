@@ -4,7 +4,7 @@ import matchSorter from 'match-sorter'
 import 'react-table/react-table.css'
 import { flights } from "./data/flights";
 import { airline } from "./data/airline";
-import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, Brush, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
   Card, CardText, CardBody,
   CardTitle
@@ -18,7 +18,7 @@ export class Airlines extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {checked: false};
+    this.state = { checked: false };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -47,19 +47,20 @@ export class Airlines extends Component {
           value={filter ? filter.value : "all"}
         >
           <option value="all">Show All</option>
-          <option value="UA">United Airlines</option>
-          <option value="AA">American Airlines</option>
-          <option value="US">US Airways</option>
-          <option value="F9">Frontier Airlines</option>
-          <option value="B6">JetBlue Airways</option>
-          <option value="OO">Skywest Airlines</option>
-          <option value="AS">Alaska Airlines</option>
-          <option value="WN">Spirit Air Lines</option>
-          <option value="DL">Southwest Airlines</option>
-          <option value="EV">Atlantic Southeast Airlines</option>
-          <option value="HA">Hawaiian Airlines</option>
-          <option value="MQ">American Eagle Airlines</option>
-          <option value="VX">Virgin America</option>
+          <option value="UA - United Airlines">United Airlines</option>
+          <option value="NK - Spirit Airlines">Spirit Airlines</option>
+          <option value="AA - American Airlines">American Airlines</option>
+          <option value="US - US Airways">US Airways</option>
+          <option value="F9 - Frontier Airlines">Frontier Airlines</option>
+          <option value="B6 - JetBlue Airways">JetBlue Airways</option>
+          <option value="OO - Skywest Airlines">Skywest Airlines</option>
+          <option value="AS - Alaska Airlines">Alaska Airlines</option>
+          <option value="WN - Southwest Airlines">Southwest AirLines</option>
+          <option value="DL - Delta Airlines">Delta Airlines</option>
+          <option value="EV - Atlantic Southeast Airlines">Atlantic Southeast Airlines</option>
+          <option value="HA - Hawaiian Airlines">Hawaiian Airlines</option>
+          <option value="MQ - American Eagle Airlines">American Eagle Airlines</option>
+          <option value="VX - Virgin America">Virgin America</option>
         </select>
     }, {
       Header: 'Origin Airport',
@@ -94,26 +95,46 @@ export class Airlines extends Component {
           <CardBody>
             <div className="box" id="graph">
               <CardBody>
-
-                <CardTitle>Graph</CardTitle>
-                <CardText>This graph demonstrates the maximum and minimum delay time for each airline.</CardText>
-                  <BarChart width={600} height={300} data={airlineData}
-                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="AIRLINE" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
-                    <ReferenceLine y={0} stroke='#000' />
-                    <Brush dataKey='AIRLINE' height={30} stroke="#8884d8" />
-                    <Bar dataKey="max" fill="#8884d8" />
-                    <Bar dataKey="min" fill="#82ca9d" />
-                  </BarChart>
+                <CardTitle>Airline Delay Time</CardTitle>
+                <CardText>This graph demonstrates the maximum and minimum delay time of each airline.</CardText>
+                <div style={{
+                  paddingBottom: '56.25%',
+                  position: 'relative',
+                  height: 0
+                }} >
+                  <div style={{
+                    position: 'absolute',
+                    top: '0',
+                    left: '0',
+                    width: '100%',
+                    height: '100%'
+                  }}>
+                    <ResponsiveContainer width="100%" height="100%" >
+                      <BarChart width={600} height={300} data={airlineData}
+                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="AIRLINE" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
+                        <ReferenceLine y={0} stroke='#000' />
+                        <Brush dataKey='name' height={30} stroke="#8884d8" />
+                        <Bar dataKey="max" fill="#8884d8" />
+                        <Bar dataKey="min" fill="#82ca9d" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
               </CardBody>
             </div>
             <div className="box" id="table">
               <CardBody>
-                <CardTitle>Table</CardTitle>
+                <CardTitle>Airline Information</CardTitle>
+
+                <CardText>This table contains airline information including origin airport, destination airport and departure delay.
+                  You can filter airlines and sort the data alphabetically by clicking on the column names. In addition, Your preferred
+                  airline will be highlighted.
+                 </CardText>
                 <label htmlFor="normal-switch">
                   <span>Highlight your Airline</span>
                   <Switch
@@ -122,7 +143,6 @@ export class Airlines extends Component {
                     id="normal-switch"
                   />
                 </label>
-                <CardText>You can sort by clicking on the column names.</CardText>
                 < ReactTable
                   data={data}
                   minRows={10}
