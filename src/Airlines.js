@@ -12,6 +12,7 @@ import {
 
 import 'firebase/auth';
 import 'firebase/database';
+import firebase from 'firebase/app';
 import Switch from "react-switch";
 
 export class Airlines extends Component {
@@ -23,7 +24,16 @@ export class Airlines extends Component {
   }
 
   handleChange(checked) {
-    this.setState({ checked });
+    if(this.props.user == null && this.state.checked === false) {
+      alert("You must signed in to highlight your airline");
+    }else {
+      this.setState({ checked });
+    }
+    console.log(this.state.checked)
+    if(this.props.user !== null && this.state.checked === false) {
+      firebase.database().ref(this.props.user.uid).on('value', (snapshot) => this.setState({'airline' : snapshot.val().text}))
+    }
+
   }
 
 
@@ -87,7 +97,7 @@ export class Airlines extends Component {
       filterAll: true // Custom cell components!
     }]
     const airlineData = airline;
-
+    console.log(this.state.airline)
     return (
       <div>
         <Card>
