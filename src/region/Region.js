@@ -7,6 +7,8 @@ import {
   CardTitle
 } from 'reactstrap';
 
+import '../region/content.css';
+
 export class Region extends Component {
 
   renderMarkers = () => {
@@ -57,15 +59,15 @@ export class Region extends Component {
   render() {
     return (
       <div>
-        <Card>
-          <CardBody>
+        <Card id="regionCard">
+          <CardBody id="regionCardBody">
             <div className="box">
             <CardBody>
             <CardTitle>Map of Airports</CardTitle>
             <CardText>The blue markers represent airports with 25 or more direct flights. The red marker represents airports with less than 25 direct flights.
               Click on an Airport to view more information.</CardText>
-            <Map
-              style={{ height: "100vh" }}
+            <Map id="map"
+              
               center={[35.64, -100.9141]}
               zoom={3}>
               <TileLayer

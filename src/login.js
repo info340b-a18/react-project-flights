@@ -6,7 +6,6 @@ import 'firebase/auth';
 import 'firebase/database';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-import './SignupForm'
 
 export class Login extends Component {
     constructor(props) {
