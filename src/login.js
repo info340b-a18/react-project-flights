@@ -190,26 +190,32 @@ export class Login extends Component {
             
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white'}}>
                 <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                {console.log(airline)}
-                {console.log(airlinename)}
-                {airlinename}
+                {this.state.user.airline}
                 </DropdownToggle>
                 <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="UA"  onClick={(e) => {this.setState({'airline':e.target.value});}}>United Airlines</DropdownItem >
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AA"  onClick={(e) => {this.setState({'airline':e.target.value});}}>American Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="US"  onClick={(e) => {this.setState({'airline':e.target.value});}}>US Airways</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="F9"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Frontier Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="B6"  onClick={(e) => {this.setState({'airline':e.target.value});}}>JetBlue Airways</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="OO"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Skywest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AS"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Alaska Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="WN"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Spirit Air Lines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="DL"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Southwest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="EV"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Atlantic Southeast Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="HA"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Hawaiian Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="MQ"  onClick={(e) => {this.setState({'airline':e.target.value});}}>American Eagle Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="VX"  onClick={(e) => {this.setState({'airline':e.target.value});}}>Virgin America</DropdownItem>
-                </DropdownMenu>          </Dropdown>       </div>   </form>       {this.state.user &&
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
+                                                                                                                            this.setState({airlinename: "Show All"})
+                                                                                                                            this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="UA - United Airlines" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="NK - Spirit Airlines" onClick={(e) => this.setState({airlinename: "Spirit Airlines"})}>Spirit Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AA - American Airlines" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="US - US Airways" onClick={(e) => this.setState({airlinename: "US Airways"})}>US Airways</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="F9 - Frontier Airlines" onClick={(e) => this.setState({airlinename: "Frontier Airlines"})}>Frontier Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="B6 - JetBlue Airways" onClick={(e) => this.setState({airlinename: "JetBlue Airways"})}>JetBlue Airways</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="OO - Skywest Airlines" onClick={(e) => this.setState({airlinename: "Skywest Airlines"})}>Skywest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AS - Alaska Airlines" onClick={(e) => this.setState({airlinename: "Alaska Airlines"})}>Alaska Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="WN - Southwest Airlines" onClick={(e) => this.setState({airlinename: "Southwest Airlines"})}>Southwest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="DL - Delta Airline s" onClick={(e) => this.setState({airlinename: "Delta Airlines"})}>Delta Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="EV - Atlantic Southeast Airlines" onClick={(e) => this.setState({airlinename: "Atlantic Southeast Airlines"})}>Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="HA - Hawaiian Airlines" onClick={(e) => this.setState({airlinename: "Hawaiian Airlines"})}>Hawaiian Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="MQ - American Eagle Airlines" onClick={(e) => this.setState({airlinename: "American Eagle Airlines"})}>American Eagle Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="VX - Virgin America" onClick={(e) => this.setState({airlinename: "Virgin America"})}>Virgin America</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
+            </div>
+
+        </form>
+            {this.state.user &&
                 <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
                         onClick={() => this.handleSignOut()}>
                 Log Out
