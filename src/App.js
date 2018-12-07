@@ -123,7 +123,7 @@ componentWillMount() {
           </Navbar>
           <Route exact path="/" component={Homepage} />
           <Route path="/Airlines" render={ () => {
-            return <Airlines  />} } />
+            return <Airlines  user={this.state.user}/>} } />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
           {/* <Route path="/login" component={Login} /> */}

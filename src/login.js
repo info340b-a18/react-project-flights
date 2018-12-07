@@ -12,11 +12,10 @@ export class Login extends Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
-
+        this.select = this.select.bind(this);
         this.state = {user: null,
             'username': undefined,
             'airline': undefined,
-            airlinename: "UA",
              dropdownOpen: false};
     }
 
@@ -34,12 +33,16 @@ export class Login extends Component {
                 this.setState({
                     user: user
                 });
+                console.log(this.state.user.uid)
+                firebase.database().ref('users').child(this.state.user.uid).on('value', (snapshot) => {console.log(snapshot.val().text); this.setState({'airline' : snapshot.val().text})})
+                console.log(this.state.airline)
             } else {
                 this.setState({
                     user: null
                 });
             }
         });
+        
     }
     
     componentWillMount() {
@@ -47,28 +50,36 @@ export class Login extends Component {
     }
     
     handleSignup(email, password, username, airline) {
-        //console.log(email + password + username + airline);
+
+        console.log(email + password + username + airline);
         this.setState({errorMessage:null});
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(
             email, password
         ).then((userCredentials) => {
             let user = userCredentials.user;
+            console.log(airline);
             user.updateProfile({
-                displayName: username,
-                // airline: airline
+                displayName: username                
             })
-
-            //console.log(user.uid);
+            console.log(user)
+            console.log(user.uid);
+            firebase.database().ref('users').child(user.uid)
+                .set({'text':airline})
+                .then()
+                .catch(err => console.log(err))
+                ;
         }).catch(function(error) {
             this.setState({errorMessage: error.message});
         }.bind(this));
+        this.setState({'airline':airline});
     }
     
     handleLogin(email, password) {
         this.setState({errorMessage:null});
         firebase.auth().signInWithEmailAndPassword(
             email, password
-        ).catch(function(error) {
+        ).then()
+        .catch(function(error) {
             console.log(this.props.airlinename);
             console.log(error.message);
             this.setState({errorMessage: error.message});
@@ -91,7 +102,49 @@ export class Login extends Component {
         }));
     }
 
+    select(event) {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen,
+            airlinename: event.target.innerText
+        });
+    }
+
+    getAirlineName(airline) {
+        if(airline === "all") {
+            return "Show All";
+        }else if(airline === "UA") {
+            return "United Airlines";
+        } else if(airline === "AA") {
+            return "American Airlines";
+        } else if(airline === "US") {
+            return "US Airways";
+        } else if(airline === "F9") {
+            return  "Frontier Airlines";
+        } else if(airline === "B6") {
+            return  "JetBlue Airways";
+        } else if(airline === "OO") {
+            return "Skywest Airlines";
+        } else if( airline === "AS") {
+            return  "Alaska Airlines";
+        } else if(airline === "WN") {
+            return "Spirit Air Lines";
+        } else if(airline=== "DL") {
+            return  "Southwest Airlines";
+        } else if(airline === "EV") {
+            return "Atlantic Southeast Airlines";
+        } else if(airline === "HA") {
+            return "Hawaiian Airlines";
+        } else if(airline === "MQ") {
+            return "American Eagle Airlines";
+        } else if(airline === "VX") {
+            return  "Virgin America";
+        } else {
+            return "Choose your flight";
+        }
+    }
+
     render() {
+        console.log(this.state.airline)
         if(!this.state.user) {
             var content = (
             <div className="signupLoginContainer">
@@ -103,6 +156,9 @@ export class Login extends Component {
             </div>
             );
         } else {
+            var airline = this.state.airline;
+            var airlinename = this.getAirlineName(airline);
+
             //this.props.returnLoginState(this.state.user)
             content = (
             <div className="logout">
@@ -136,58 +192,29 @@ export class Login extends Component {
     
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
-            {console.log(this.state.user)}
-            {console.log(this.state.user.airline)}
+            
             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white'}}>
                 <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                {this.state.user.airline === "all"?
-                    "Show All"
-                :this.state.user.airline === "UA"?
-                    "United Airlines"
-                :this.state.user.airline === "NK"?
-                    "Spirit Airlines"
-                :this.state.user.airline === "AA"?
-                    "American Airlines"
-                :this.state.user.airline === "US"?
-                    "US Airways"
-                :this.state.user.airline === "F9"?
-                    "Frontier Airlines"
-                :this.state.user.airline === "B6"?
-                    "JetBlue Airways"
-                :this.state.user.airline === "OO"?
-                    "Skywest Airlines"
-                :this.state.user.airline === "AS"?
-                    "Alaska Airlines"
-                :this.state.user.airline === "WN"?
-                    "Southwest Airlines"
-                :this.state.user.airline === "DL"?
-                    "Delta Airlines"
-                :this.state.user.airline === "EV"?
-                    "Atlantic Southeast Airlines"
-                :this.state.user.airline === "HA"?
-                    "Hawaiian Airlines"
-                :this.state.user.airline === "MQ"?
-                    "American Eagle Airlines"
-                : "Virgin America"
-                }
-                {this.state.user.airline}
+                {this.state.airline}
                 </DropdownToggle>
                 <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}}>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => this.setState({airlinename: "Show All"})}>Show All</DropdownItem >
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="UA" onClick={(e) => this.setState({airlinename: "United Airlines"})}>United Airlines</DropdownItem >
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="NK" onClick={(e) => this.setState({airlinename: "Spirit Airlines"})}>Spirit Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AA" onClick={(e) => this.setState({airlinename: "American Airlines"})}>American Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="US" onClick={(e) => this.setState({airlinename: "US Airways"})}>US Airways</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="F9" onClick={(e) => this.setState({airlinename: "Frontier Airlines"})}>Frontier Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="B6" onClick={(e) => this.setState({airlinename: "JetBlue Airways"})}>JetBlue Airways</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="OO" onClick={(e) => this.setState({airlinename: "Skywest Airlines"})}>Skywest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AS" onClick={(e) => this.setState({airlinename: "Alaska Airlines"})}>Alaska Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="WN" onClick={(e) => this.setState({airlinename: "Southwest Airlines"})}>Southwest Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="DL" onClick={(e) => this.setState({airlinename: "Delta Airlines"})}>Delta Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="EV" onClick={(e) => this.setState({airlinename: "Atlantic Southeast Airlines"})}>Atlantic Southeast Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="HA" onClick={(e) => this.setState({airlinename: "Hawaiian Airlines"})}>Hawaiian Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="MQ" onClick={(e) => this.setState({airlinename: "American Eagle Airlines"})}>American Eagle Airlines</DropdownItem>
-                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="VX" onClick={(e) => this.setState({airlinename: "Virgin America"})}>Virgin America</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
+                                                                                                                            this.setState({airlinename: "Show All"})
+                                                                                                                            this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="UA - United Airlines" onClick={(e) => this.setState({airline: "UA - United Airlines"})}>United Airlines</DropdownItem >
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="NK - Spirit Airlines" onClick={(e) => this.setState({airline: "NK - Spirit Airlines"})}>Spirit Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AA - American Airlines" onClick={(e) => this.setState({airline: "AA - American Airlines"})}>American Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="US - US Airways" onClick={(e) => this.setState({airline: "US - US Airways"})}>US Airways</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="F9 - Frontier Airlines" onClick={(e) => this.setState({airline: "F9 - Frontier Airlines"})}>Frontier Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="B6 - JetBlue Airways" onClick={(e) => this.setState({airline: "B6 - JetBlue Airways"})}>JetBlue Airways</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="OO - Skywest Airlines" onClick={(e) => this.setState({airline: "OO - Skywest Airlines"})}>Skywest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="AS - Alaska Airlines" onClick={(e) => this.setState({airlinee: "AS - Alaska Airlines"})}>Alaska Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="WN - Southwest Airlines" onClick={(e) => this.setState({airline: "WN - Southwest Airlines"})}>Southwest Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="DL - Delta Airline s" onClick={(e) => this.setState({airline: "DL - Delta Airlines"})}>Delta Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="EV - Atlantic Southeast Airlines" onClick={(e) => this.setState({airline: "EV - Atlantic Southeast Airlines"})}>Atlantic Southeast Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="HA - Hawaiian Airlines" onClick={(e) => this.setState({airline: "HA - Hawaiian Airlines"})}>Hawaiian Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="MQ - American Eagle Airlines" onClick={(e) => this.setState({airline: "MQ - American Eagle Airlines"})}>American Eagle Airlines</DropdownItem>
+                    <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="VX - Virgin America" onClick={(e) => this.setState({airline: "VX - Virgin America"})}>Virgin America</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
             </div>
@@ -199,15 +226,17 @@ export class Login extends Component {
                 Log Out
                 </button>
             }
-            {/* <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
+            <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white'}} 
                 onClick={() => {
-                    firebase.user.updateProfie({
-                        displayName: this.state.username,
-                        airline: this.state.airline
-                    })
+                    var userid = this.state.user.uid;
+                firebase.database().ref('users').child(userid)
+                .set({'text':this.state.airline})
+                .then()
+                .catch(err => console.log(err))
+                ;
                 }}>
                  Update Profile
-             </button> */}
+             </button>
             </div>
 
             );
