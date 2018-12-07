@@ -95,7 +95,7 @@ export class Airlines extends Component {
           <CardBody>
             <div className="box" id="graph">
               <CardBody>
-                <CardTitle>Airline delay time</CardTitle>
+                <CardTitle>Airline Delay Time</CardTitle>
                 <CardText>This graph demonstrates the maximum and minimum delay time of each airline.</CardText>
                 <div style={{
                   paddingBottom: '56.25%',
@@ -129,7 +129,7 @@ export class Airlines extends Component {
             </div>
             <div className="box" id="table">
               <CardBody>
-                <CardTitle>Airline information</CardTitle>
+                <CardTitle>Airline Information</CardTitle>
 
                 <CardText>This table contains airline information including origin airport, destination airport and departure delay.
                   You can filter airlines and sort the data alphabetically by clicking on the column names. In addition, Your preferred
