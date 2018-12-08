@@ -42,19 +42,6 @@ export class App extends Component {
     };
     this.loginState = {};
   }
-  
-  // getLoginState = (loginStateFromLoginPage) => {
-  //   console.log("test")
-  //   this.loginState = {
-  //   //this.setState({
-  //     email: loginStateFromLoginPage.email,
-  //     password: loginStateFromLoginPage.password,
-  //     displayName: loginStateFromLoginPage.displayName,
-  //     airline: loginStateFromLoginPage.airline
-  //   };
-  //   console.log(loginStateFromLoginPage);
-  // }
-
 
   componentDidMount() {
     this.authUnRegFunc = firebase.auth().onAuthStateChanged((user) => {
@@ -135,10 +122,8 @@ componentWillMount() {
             return <Airlines  user={this.state.user}/>} } />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
-          {/* <Route path="/login" component={Login} /> */}
           <Route path="/login" render={ () => {
             return <Login changeNavName={this.changeName}/>
-            // return <Login returnLoginState={this.getLoginState} />
           } } />
         </div>
       </Router>

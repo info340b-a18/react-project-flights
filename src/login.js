@@ -194,6 +194,7 @@ export class Login extends Component {
                 .then()
                 .catch(err => console.log(err))
                 ;
+                alert("Updated")
                 }}>
                  Update Profile
              </button>
