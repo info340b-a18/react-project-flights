@@ -17,7 +17,7 @@ export class Login extends Component {
             'airline': undefined,
              dropdownOpen: false};
     }
-
+    //update the state when the field changes
     handleChange(event) {
         let field = event.target.name;
         let value = event.target.value;
@@ -26,15 +26,14 @@ export class Login extends Component {
         this.setState(changes);
     }
 
+    //get the prefer airline fromt the firebase when user signed in
     componentDidMount() {
         this.authUnRegFunc = firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({
                     user: user
                 });
-                console.log(this.state.user.uid)
-                firebase.database().ref('users').child(this.state.user.uid).on('value', (snapshot) => {console.log(snapshot.val().text); this.setState({'airline' : snapshot.val().text})})
-                console.log(this.state.airline)
+                firebase.database().ref('users').child(this.state.user.uid).on('value', (snapshot) => {this.setState({'airline' : snapshot.val().text})})
             } else {
                 this.setState({
                     user: null
@@ -48,20 +47,17 @@ export class Login extends Component {
         return this.authUnRegFunc;
     }
     
+    //call this function when user sign up
+    //push the prefer airline into the firebase
     handleSignup(email, password, username, airline) {
-
-        console.log(email + password + username + airline);
         this.setState({errorMessage:null});
         firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(
             email, password
         ).then((userCredentials) => {
             let user = userCredentials.user;
-            console.log(airline);
             user.updateProfile({
                 displayName: username                
             })
-            console.log(user)
-            console.log(user.uid);
             firebase.database().ref('users').child(user.uid)
                 .set({'text':airline})
                 .then()
@@ -72,19 +68,20 @@ export class Login extends Component {
         }.bind(this));
         this.setState({'airline':airline});
     }
-    
+
+    //call this function when user login
+    //sign user into the firebase
     handleLogin(email, password) {
         this.setState({errorMessage:null});
         firebase.auth().signInWithEmailAndPassword(
             email, password
         ).then()
         .catch(function(error) {
-            console.log(this.props.airlinename);
-            console.log(error.message);
             this.setState({errorMessage: error.message});
         }.bind(this));
     }
 
+    //signout user from the firebase
     handleSignOut(){
         this.setState({errorMessage:null});
         firebase.auth().signOut(
@@ -94,13 +91,14 @@ export class Login extends Component {
         });
     }
     
-    //keep
+    //keep track of dropdown menu open/close
     toggle() {
         this.setState(prevState => ({
             dropdownOpen: !prevState.dropdownOpen
         }));
     }
 
+    //change the selected airline in the dropdown
     select(event) {
         this.setState({
             dropdownOpen: !this.state.dropdownOpen,
@@ -109,7 +107,6 @@ export class Login extends Component {
     }
 
     render() {
-        console.log(this.state.airline)
         if(!this.state.user) {
             var content = (
             <div className="signupLoginContainer">
@@ -122,10 +119,6 @@ export class Login extends Component {
             </div>
             );
         } else {
-            var airline = this.state.airline;
-            // var airlinename = this.getAirlineName(airline);
-
-            //this.props.returnLoginState(this.state.user)
             content = (
             <div className="logout">
                        <form>
@@ -163,7 +156,7 @@ export class Login extends Component {
                 <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}}>
                 {this.state.airline}
                 </DropdownToggle>
-                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'border-radius': '8px'}}>
+                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'borderRadius': '8px'}}>
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
                                                                                                                             this.setState({airlinename: "Show All"})
                                                                                                                             this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
@@ -186,11 +179,10 @@ export class Login extends Component {
             </div>
 
         </form>
+        {/* update the airline and displayname in the firebase */}
         <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'marginBottom':'1rem', 'borderRadius': '8px'}} 
                 onClick={() => {
-                    console.log(this.state.displayName)
                     if(this.state.displayName !== undefined) {
-                        console.log(this.state.displayName)
                         firebase.auth().currentUser.updateProfile({
                             displayName: this.state.displayName
                         })
@@ -205,15 +197,14 @@ export class Login extends Component {
                 }}>
                  Update Profile
              </button>
+             {/* log out button */}
             {this.state.user &&
                 <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}} 
                         onClick={() => {this.handleSignOut(); this.props.changeNavName(null);}}>
                 Log Out
                 </button>
             }
-            
             </div>
-
             );
         }
         return (
