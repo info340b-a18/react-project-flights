@@ -123,10 +123,8 @@ componentWillMount() {
             return <Airlines  user={this.state.user}/>} } />
           <Route path="/Region" component={Region} />
           <Route path="/about" component={About} />
-          {/* <Route path="/login" component={Login} /> */}
           <Route path="/login" render={ () => {
             return <Login changeNavName={this.changeName}/>
-            // return <Login returnLoginState={this.getLoginState} />
           } } />
         </div>
       </Router>

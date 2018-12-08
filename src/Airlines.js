@@ -31,7 +31,6 @@ export class Airlines extends Component {
     }else {
       this.setState({ checked });
     }
-    console.log(this.state.checked)
     if(this.props.user !== null && this.state.checked === false) {
       firebase.database().ref('users').child(this.props.user.uid).on('value', (snapshot) => this.setState({'airline' : snapshot.val().text}))
     }
@@ -99,9 +98,6 @@ export class Airlines extends Component {
       filterAll: true // Custom cell components!
     }]
     const airlineData = airline;
-    console.log(this.state.airline)
-
-    // renders the entire airlines page with chart and table
     return (
       <div>
         <Card>
@@ -162,13 +158,25 @@ export class Airlines extends Component {
                   />
                 </label>
                 < ReactTable
+<<<<<<< HEAD
                 // highlights the table with preferred airline
+=======
+                
+>>>>>>> master
                   getTrProps={(state,rowInfo)=> {
-                    return {
+                    if(this.state.checked == true) {
+                      return {
+                          style: {
+                            background: rowInfo.row.AIRLINE == this.state.airline ? "yellow" : "white"
+                        }
+                      }
+                    } else {
+                      return {
                         style: {
-                          background: rowInfo.row.AIRLINE == this.state.airline ? "yellow" : "white"
+                          background: rowInfo.row.AIRLINE ==  "white"
                       }
                     }
+                    } 
                   }
                   }
                   data={data}
