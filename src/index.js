@@ -7,7 +7,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth'; 
 import 'firebase/database';
 
-
+// config for firebase
   var config = {
     apiKey: "AIzaSyD29La4k1_eDq_g-BdJGYzb5E-qxRRaLH8",
     authDomain: "react-flights.firebaseapp.com",

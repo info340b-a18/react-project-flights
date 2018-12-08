@@ -11,6 +11,7 @@ import '../region/content.css';
 
 export class Region extends Component {
 
+  // Creates markers for the map
   renderMarkers = () => {
     return airports.map(
       
@@ -58,6 +59,7 @@ export class Region extends Component {
   }
   render() {
     return (
+      // Creates the map using Leaflet
       <div>
         <Card id="regionCard">
           <CardBody id="regionCardBody">

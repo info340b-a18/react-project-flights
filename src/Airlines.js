@@ -24,7 +24,7 @@ export class Airlines extends Component {
     this.state = { checked: false };
     this.handleChange = this.handleChange.bind(this);
   }
-
+// obtains the user's preferred airline to use for highlighting the table
   handleChange(checked) {
     if(this.props.user == null && this.state.checked === false) {
       alert("You must signed in to highlight your airline");
@@ -37,7 +37,7 @@ export class Airlines extends Component {
     }
   }
 
-
+// creates the table using react-table package
   render() {
     const data = flights
 
@@ -100,6 +100,8 @@ export class Airlines extends Component {
     }]
     const airlineData = airline;
     console.log(this.state.airline)
+
+    // renders the entire airlines page with chart and table
     return (
       <div>
         <Card>
@@ -160,6 +162,7 @@ export class Airlines extends Component {
                   />
                 </label>
                 < ReactTable
+                // highlights the table with preferred airline
                   getTrProps={(state,rowInfo)=> {
                     return {
                         style: {

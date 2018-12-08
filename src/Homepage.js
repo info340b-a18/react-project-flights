@@ -12,7 +12,7 @@ import 'firebase/database';
 
 
 
-
+// Homepage with the descriptions to each page
 export class Homepage extends Component {
 
     render() {
