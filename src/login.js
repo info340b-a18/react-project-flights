@@ -131,7 +131,7 @@ export class Login extends Component {
                        <form>
             <div className="form-group">
             <label htmlFor="email">Email</label>
-            <p style={{ 'borderStyle': 'solid', 'borderWidth': '1px', 'borderColor':'rgb(211,211,211)', 'padding':'7px', 'width': '100%', 'margin-left': '0'}}>{this.state.user.email}</p>
+            <p style={{ 'borderStyle': 'solid', 'borderWidth': '1px', 'borderColor':'rgb(211,211,211)', 'padding':'7px', 'width': '100%', 'marginLeft': '0'}}>{this.state.user.email}</p>
             </div>
             
             <div className="form-group">
@@ -159,8 +159,8 @@ export class Login extends Component {
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
             
-            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}}>
-                <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}}>
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}}>
+                <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}}>
                 {this.state.airline}
                 </DropdownToggle>
                 <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'border-radius': '8px'}}>
@@ -186,7 +186,7 @@ export class Login extends Component {
             </div>
 
         </form>
-        <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'margin-bottom':'1rem', 'border-radius': '8px'}} 
+        <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'marginBottom':'1rem', 'borderRadius': '8px'}} 
                 onClick={() => {
                     console.log(this.state.displayName)
                     if(this.state.displayName !== undefined) {
@@ -206,7 +206,7 @@ export class Login extends Component {
                  Update Profile
              </button>
             {this.state.user &&
-                <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'border-radius': '8px'}} 
+                <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}} 
                         onClick={() => {this.handleSignOut(); this.props.changeNavName(null);}}>
                 Log Out
                 </button>
