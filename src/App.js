@@ -43,19 +43,7 @@ export class App extends Component {
     this.loginState = {};
   }
   
-  // getLoginState = (loginStateFromLoginPage) => {
-  //   console.log("test")
-  //   this.loginState = {
-  //   //this.setState({
-  //     email: loginStateFromLoginPage.email,
-  //     password: loginStateFromLoginPage.password,
-  //     displayName: loginStateFromLoginPage.displayName,
-  //     airline: loginStateFromLoginPage.airline
-  //   };
-  //   console.log(loginStateFromLoginPage);
-  // }
-
-
+// keeps track of user
   componentDidMount() {
     this.authUnRegFunc = firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -75,7 +63,6 @@ componentWillMount() {
 }
 
   changeName(name) {
-    console.log(name)
     this.setState({displayName: name})
   }
   
@@ -85,6 +72,7 @@ componentWillMount() {
     });
   };
   render() {
+    //nav bar
     return (
       <Router>
         <div>

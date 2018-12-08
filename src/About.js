@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 
-
+// The about page....
 export class About extends Component {
     render() {
         return (
