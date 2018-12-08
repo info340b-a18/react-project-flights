@@ -158,12 +158,21 @@ export class Airlines extends Component {
                   />
                 </label>
                 < ReactTable
+                
                   getTrProps={(state,rowInfo)=> {
-                    return {
+                    if(this.state.checked == true) {
+                      return {
+                          style: {
+                            background: rowInfo.row.AIRLINE == this.state.airline ? "yellow" : "white"
+                        }
+                      }
+                    } else {
+                      return {
                         style: {
-                          background: rowInfo.row.AIRLINE == this.state.airline ? "yellow" : "white"
+                          background: rowInfo.row.AIRLINE ==  "white"
                       }
                     }
+                    } 
                   }
                   }
                   data={data}
