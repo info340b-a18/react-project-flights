@@ -108,39 +108,39 @@ export class Login extends Component {
         });
     }
 
-    getAirlineName(airline) {
-        if(airline === "all") {
-            return "Show All";
-        }else if(airline === "UA") {
-            return "United Airlines";
-        } else if(airline === "AA") {
-            return "American Airlines";
-        } else if(airline === "US") {
-            return "US Airways";
-        } else if(airline === "F9") {
-            return  "Frontier Airlines";
-        } else if(airline === "B6") {
-            return  "JetBlue Airways";
-        } else if(airline === "OO") {
-            return "Skywest Airlines";
-        } else if( airline === "AS") {
-            return  "Alaska Airlines";
-        } else if(airline === "WN") {
-            return "Spirit Air Lines";
-        } else if(airline=== "DL") {
-            return  "Southwest Airlines";
-        } else if(airline === "EV") {
-            return "Atlantic Southeast Airlines";
-        } else if(airline === "HA") {
-            return "Hawaiian Airlines";
-        } else if(airline === "MQ") {
-            return "American Eagle Airlines";
-        } else if(airline === "VX") {
-            return  "Virgin America";
-        } else {
-            return "Choose your flight";
-        }
-    }
+    // getAirlineName(airline) {
+    //     if(airline === "all") {
+    //         return "Show All";
+    //     }else if(airline === "UA") {
+    //         return "United Airlines";
+    //     } else if(airline === "AA") {
+    //         return "American Airlines";
+    //     } else if(airline === "US") {
+    //         return "US Airways";
+    //     } else if(airline === "F9") {
+    //         return  "Frontier Airlines";
+    //     } else if(airline === "B6") {
+    //         return  "JetBlue Airways";
+    //     } else if(airline === "OO") {
+    //         return "Skywest Airlines";
+    //     } else if( airline === "AS") {
+    //         return  "Alaska Airlines";
+    //     } else if(airline === "WN") {
+    //         return "Spirit Air Lines";
+    //     } else if(airline=== "DL") {
+    //         return  "Southwest Airlines";
+    //     } else if(airline === "EV") {
+    //         return "Atlantic Southeast Airlines";
+    //     } else if(airline === "HA") {
+    //         return "Hawaiian Airlines";
+    //     } else if(airline === "MQ") {
+    //         return "American Eagle Airlines";
+    //     } else if(airline === "VX") {
+    //         return  "Virgin America";
+    //     } else {
+    //         return "Choose your flight";
+    //     }
+    // }
 
     render() {
         console.log(this.state.airline)
@@ -156,7 +156,7 @@ export class Login extends Component {
             );
         } else {
             var airline = this.state.airline;
-            var airlinename = this.getAirlineName(airline);
+            // var airlinename = this.getAirlineName(airline);
 
             //this.props.returnLoginState(this.state.user)
             content = (
@@ -179,7 +179,7 @@ export class Login extends Component {
             </div>
     
             <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Name</label>
             <input className="form-control" 
                 id="username" 
                 type="username"
@@ -221,6 +221,14 @@ export class Login extends Component {
         </form>
         <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'margin-bottom':'1rem', 'border-radius': '8px'}} 
                 onClick={() => {
+                    console.log(this.state.displayName)
+                    if(this.state.displayName !== undefined) {
+                        console.log(this.state.displayName)
+                        firebase.auth().currentUser.updateProfile({
+                            displayName: this.state.displayName
+                        })
+                        this.props.changeNavName(this.state.displayName)
+                    }
                     var userid = this.state.user.uid;
                 firebase.database().ref('users').child(userid)
                 .set({'text':this.state.airline})
