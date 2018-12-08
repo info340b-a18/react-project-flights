@@ -163,7 +163,7 @@ export class Login extends Component {
                 <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}}>
                 {this.state.airline}
                 </DropdownToggle>
-                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'border-radius': '8px'}}>
+                <DropdownMenu className="col-12" style={{'backgroundColor': '#003459', 'color': 'white' , 'borderRadius': '8px'}}>
                     <DropdownItem className="col-12" style={{'backgroundColor': '#003459', 'color': 'white'}} value="all" onClick={(e) => {
                                                                                                                             this.setState({airlinename: "Show All"})
                                                                                                                             this.setState({'airline':e.target.value})}}>Show All</DropdownItem >
