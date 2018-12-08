@@ -15,6 +15,8 @@ import 'firebase/database';
 import firebase from 'firebase/app';
 import Switch from "react-switch";
 
+import './Airline.css'
+
 export class Airlines extends Component {
 
   constructor(props) {
@@ -101,7 +103,7 @@ export class Airlines extends Component {
     return (
       <div>
         <Card>
-          <CardBody>
+          <CardBody id="cardbody">
             <div className="box" id="graph">
               <CardBody>
                 <CardTitle>Airline Delay Time</CardTitle>
@@ -118,7 +120,7 @@ export class Airlines extends Component {
                     width: '100%',
                     height: '100%'
                   }}>
-                    <ResponsiveContainer width="100%" height="100%" >
+                    <ResponsiveContainer id="chart" width="100%" height="100%" >
                       <BarChart width={600} height={300} data={airlineData}
                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -132,6 +134,7 @@ export class Airlines extends Component {
                         <Bar dataKey="min" fill="#82ca9d" />
                       </BarChart>
                     </ResponsiveContainer>
+                    <p id="desc">*This graph can only be displayed on large screens</p>
                   </div>
                 </div>
               </CardBody>

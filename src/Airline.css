@@ -1,0 +1,23 @@
+
+@media(min-width: 375px) {
+    #desc{
+        display:none;
+    }
+}
+@media(max-width: 750px){
+    #cardbody {
+        padding: 0px;
+    };
+}
+
+@media(max-width: 375px) {
+    #chart{
+        display: none;
+      visibility: hidden;  
+    };
+
+
+}
+#chart {
+    visibility: visible;
+}
