@@ -37,12 +37,17 @@ class SignupForm extends Component {
     handleSignup(event) {
         event.preventDefault();
         console.log(this.state.airline);
-        this.props.signupCallback(
-            this.state.email,
-            this.state.password,
-            this.state.displayName,
-            this.state.airline
-        );
+        if(this.state.displayName !== undefined
+            && this.state.airline !== undefined) {
+            this.props.signupCallback(
+                this.state.email,
+                this.state.password,
+                this.state.displayName,
+                this.state.airline
+            );
+        } else {
+            alert("Please enter your name and airline")
+        }
     }
 
     handleLogin(event) {
@@ -89,7 +94,7 @@ class SignupForm extends Component {
             </div>
     
             <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Name</label>
             <input className="form-control" 
                 id="username" 
                 type="username"
