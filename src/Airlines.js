@@ -31,7 +31,6 @@ export class Airlines extends Component {
     }else {
       this.setState({ checked });
     }
-    console.log(this.state.checked)
     if(this.props.user !== null && this.state.checked === false) {
       firebase.database().ref('users').child(this.props.user.uid).on('value', (snapshot) => this.setState({'airline' : snapshot.val().text}))
     }
@@ -99,7 +98,6 @@ export class Airlines extends Component {
       filterAll: true // Custom cell components!
     }]
     const airlineData = airline;
-    console.log(this.state.airline)
     return (
       <div>
         <Card>
