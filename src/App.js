@@ -33,10 +33,12 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
+    this.changeName = this.changeName.bind(this);
     this.state = {
       isOpen: false,
       loginState: {},
-      user: null
+      user: null,
+      displayName: null
     };
     this.loginState = {};
   }
@@ -71,6 +73,11 @@ export class App extends Component {
 componentWillMount() {
     return this.authUnRegFunc;
 }
+
+  changeName(name) {
+    console.log(name)
+    this.setState({displayName: name})
+  }
   
   toggle() {
     this.setState({
@@ -110,7 +117,9 @@ componentWillMount() {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} to="/login" style={{color: 'white'}}>
-                  {this.state.user !== null?
+                  {this.state.displayName !== null?
+                    this.state.displayName
+                  :this.state.user !== null?
                   this.state.user.displayName
                   :
                    "Login"
@@ -128,7 +137,7 @@ componentWillMount() {
           <Route path="/about" component={About} />
           {/* <Route path="/login" component={Login} /> */}
           <Route path="/login" render={ () => {
-            return <Login />
+            return <Login changeNavName={this.changeName}/>
             // return <Login returnLoginState={this.getLoginState} />
           } } />
         </div>

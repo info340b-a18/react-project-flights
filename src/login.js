@@ -108,40 +108,6 @@ export class Login extends Component {
         });
     }
 
-    getAirlineName(airline) {
-        if(airline === "all") {
-            return "Show All";
-        }else if(airline === "UA") {
-            return "United Airlines";
-        } else if(airline === "AA") {
-            return "American Airlines";
-        } else if(airline === "US") {
-            return "US Airways";
-        } else if(airline === "F9") {
-            return  "Frontier Airlines";
-        } else if(airline === "B6") {
-            return  "JetBlue Airways";
-        } else if(airline === "OO") {
-            return "Skywest Airlines";
-        } else if( airline === "AS") {
-            return  "Alaska Airlines";
-        } else if(airline === "WN") {
-            return "Spirit Air Lines";
-        } else if(airline=== "DL") {
-            return  "Southwest Airlines";
-        } else if(airline === "EV") {
-            return "Atlantic Southeast Airlines";
-        } else if(airline === "HA") {
-            return "Hawaiian Airlines";
-        } else if(airline === "MQ") {
-            return "American Eagle Airlines";
-        } else if(airline === "VX") {
-            return  "Virgin America";
-        } else {
-            return "Choose your flight";
-        }
-    }
-
     render() {
         console.log(this.state.airline)
         if(!this.state.user) {
@@ -150,13 +116,14 @@ export class Login extends Component {
                 <h1>Sign Up or Login</h1>
                 <SignupForm 
                 signupCallback={(e,p,h,a) => this.handleSignup(e,p,h,a)} 
-                loginCallback={(e,p) => this.handleLogin(e,p)} 
+                loginCallback={(e,p) => this.handleLogin(e,p)}
+                changeNavName={this.props.changeNavName}
                 />
             </div>
             );
         } else {
             var airline = this.state.airline;
-            var airlinename = this.getAirlineName(airline);
+            // var airlinename = this.getAirlineName(airline);
 
             //this.props.returnLoginState(this.state.user)
             content = (
@@ -179,7 +146,7 @@ export class Login extends Component {
             </div>
     
             <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Name</label>
             <input className="form-control" 
                 id="username" 
                 type="username"
@@ -221,6 +188,14 @@ export class Login extends Component {
         </form>
         <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'marginBottom':'1rem', 'borderRadius': '8px'}} 
                 onClick={() => {
+                    console.log(this.state.displayName)
+                    if(this.state.displayName !== undefined) {
+                        console.log(this.state.displayName)
+                        firebase.auth().currentUser.updateProfile({
+                            displayName: this.state.displayName
+                        })
+                        this.props.changeNavName(this.state.displayName)
+                    }
                     var userid = this.state.user.uid;
                 firebase.database().ref('users').child(userid)
                 .set({'text':this.state.airline})
@@ -232,7 +207,7 @@ export class Login extends Component {
              </button>
             {this.state.user &&
                 <button className="logout btn" style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}} 
-                        onClick={() => this.handleSignOut()}>
+                        onClick={() => {this.handleSignOut(); this.props.changeNavName(null);}}>
                 Log Out
                 </button>
             }

@@ -20,43 +20,41 @@ class SignupForm extends Component {
         }; 
     }
 
-
+    //Updates the state when user type email, password, name and airline
     handleChange(event) {
         let field = event.target.name;
         let value = event.target.value;
-        console.log(field + " " + value)
         let changes = {};
         changes[field] = value;
         this.setState(changes);
     }
 
-    // handleAirlineChange(event, selectedIndex, menulItem) {
-
-    // }
-
+    //Call this function when user clicks handlesignup
+    //If the user did not choose airline, it shows alert.
     handleSignup(event) {
         event.preventDefault();
-        console.log(this.state.airline);
-        this.props.signupCallback(
-            this.state.email,
-            this.state.password,
-            this.state.displayName,
-            this.state.airline
-        );
+        if(this.state.displayName !== undefined
+            && this.state.airline !== undefined) {
+            this.props.signupCallback(
+                this.state.email,
+                this.state.password,
+                this.state.displayName,
+                this.state.airline
+            );
+        } else {
+            alert("Please enter your name and airline")
+        }
     }
 
+    //call this function when user log in
     handleLogin(event) {
         event.preventDefault();
         this.props.loginCallback(
             this.state.email, this.state.password
         )
-        // .then(() => {
-        //     firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airline);
-        // });
-        //console.log(this.state.airlinename);
-        //firebase.database().ref('airlinePref/' + firebase.auth().currentUser).set(this.state.airlinename);
     }
 
+    //Update the dropdown open/close
     toggle() {
         this.setState(prevState => ({
           dropdownOpen: !prevState.dropdownOpen
@@ -65,6 +63,7 @@ class SignupForm extends Component {
 
     render() {
         return (
+        //Email input box
         <form>
             <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -77,6 +76,7 @@ class SignupForm extends Component {
             />
             </div>
             
+            {/* Passwod input box */}
             <div className="form-group">
             <label htmlFor="password">Password</label>
             <input className="form-control" 
@@ -88,8 +88,9 @@ class SignupForm extends Component {
             />
             </div>
     
+            {/* Name input box */}
             <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Name</label>
             <input className="form-control" 
                 id="username" 
                 type="username"
@@ -100,7 +101,7 @@ class SignupForm extends Component {
             </div>
             <div className="form-group">
             <label htmlFor="airline">Airline</label>
-            {/* dropdownmenu */}
+            {/* Airline dropdownmenu */}
             <Dropdown  className="col-12" style={{'backgroundColor': '#003459', 'color': 'white', 'marginBottom':'1rem', 'borderRadius': '8px'}} isOpen={this.state.dropdownOpen} toggle={this.toggle} >
                 <DropdownToggle className="col-12" caret style={{'backgroundColor': '#003459', 'color': 'white', 'borderRadius': '8px'}}>
 
@@ -129,11 +130,13 @@ class SignupForm extends Component {
                 </DropdownMenu>
             </Dropdown>
             </div>
+            {/* signup button */}
             <div className="form-group">
-            <button className="signup btn btn-primary mr-2" onClick={(e) => this.handleSignup(e)}>
+            <button className="signup btn btn-primary mr-2" onClick={(e) => {this.handleSignup(e); this.props.changeNavName(this.state.displayName)}}>
                 Sign Up
             </button>
             </div>
+            {/* login button */}
             <div className="form-group">
             <button className="login btn btn-primary" onClick={(e) => this.handleLogin(e)}>
                 Login
