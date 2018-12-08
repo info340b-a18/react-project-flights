@@ -104,7 +104,9 @@ export class Airlines extends Component {
       <div>
         <Card>
           <CardBody id="cardbody">
-            <div className="box" id="graph">
+            <div className="box" id="graph" style={{
+              paddingTop: '3.5rem'
+            }}>
               <CardBody>
                 <CardTitle>Airline Delay Time</CardTitle>
                 <CardText>This graph demonstrates the maximum and minimum delay time of each airline.</CardText>
@@ -139,7 +141,9 @@ export class Airlines extends Component {
                 </div>
               </CardBody>
             </div>
-            <div className="box" id="table">
+            <div className="box" id="table" style={{
+              paddingTop: '3.5rem'
+            }}>
               <CardBody>
                 <CardTitle>Airline Information</CardTitle>
 
